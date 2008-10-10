@@ -25,6 +25,7 @@
 		case 2:
 			cell.text = @"Fremont and 34th";
 	}
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	return cell;
 }
 
