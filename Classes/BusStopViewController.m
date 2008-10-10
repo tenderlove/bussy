@@ -11,6 +11,20 @@
 
 @implementation BusStopViewController
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"stop"];
+	if(nil == cell)
+		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"stop"] autorelease];
+	
+	return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return 1;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
 		// Initialization code

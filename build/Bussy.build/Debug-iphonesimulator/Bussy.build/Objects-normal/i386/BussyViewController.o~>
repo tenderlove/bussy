@@ -1,0 +1,4 @@
+/Users/aaron/Documents/Bussy/Classes/BussyViewController.m: In function '-[BussyViewController tableView:didSelectRowAtIndexPath:]':
+/Users/aaron/Documents/Bussy/Classes/BussyViewController.m:38: error: 'appDelegate' undeclared (first use in this function)
+/Users/aaron/Documents/Bussy/Classes/BussyViewController.m:38: error: (Each undeclared identifier is reported only once
+/Users/aaron/Documents/Bussy/Classes/BussyViewController.m:38: error: for each function it appears in.)

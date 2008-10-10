@@ -21,5 +21,7 @@
 @property (nonatomic, retain) UIWindow *window;
 @property (nonatomic, retain) BussyViewController *busStopsController;
 
+- (void)stopClicked:(NSString *)stopName;
+
 @end
 

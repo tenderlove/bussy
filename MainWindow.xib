@@ -8,8 +8,8 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="17"/>
 			<integer value="13"/>
+			<integer value="17"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -38,12 +38,13 @@
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 			</object>
 			<object class="IBUIViewController" id="943309135">
+				<string key="IBUITitle">Bus Stops</string>
 				<string key="IBUINibName">BussyViewController</string>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 			</object>
-			<object class="IBUINavigationController" id="164112192">
+			<object class="IBUINavigationController" id="344440546">
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
-				<object class="IBUINavigationBar" key="IBUINavigationBar" id="769391905">
+				<object class="IBUINavigationBar" key="IBUINavigationBar" id="596749301">
 					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<string key="NSFrameSize">{0, 0}</string>
@@ -53,16 +54,16 @@
 				</object>
 				<object class="NSMutableArray" key="IBUIViewControllers">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBUIViewController" id="746605274">
-						<object class="IBUINavigationItem" key="IBUINavigationItem" id="598860602">
+					<object class="IBUIViewController" id="707098578">
+						<object class="IBUINavigationItem" key="IBUINavigationItem" id="535484406">
 							<reference key="IBUINavigationBar"/>
 							<string key="IBUITitle">Navigation Item</string>
 						</object>
-						<reference key="IBUIParentViewController" ref="164112192"/>
+						<reference key="IBUIParentViewController" ref="344440546"/>
 					</object>
 				</object>
 			</object>
-			<object class="IBUIViewController" id="793487660">
+			<object class="IBUIViewController" id="296379359">
 				<string key="IBUINibName">BusStop</string>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 			</object>
@@ -98,7 +99,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">busStopController</string>
 						<reference key="source" ref="664661524"/>
-						<reference key="destination" ref="793487660"/>
+						<reference key="destination" ref="296379359"/>
 					</object>
 					<int key="connectionID">19</int>
 				</object>
@@ -106,9 +107,17 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">navController</string>
 						<reference key="source" ref="664661524"/>
-						<reference key="destination" ref="164112192"/>
+						<reference key="destination" ref="344440546"/>
 					</object>
 					<int key="connectionID">20</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">appDelegate</string>
+						<reference key="source" ref="943309135"/>
+						<reference key="destination" ref="664661524"/>
+					</object>
+					<int key="connectionID">22</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -154,36 +163,36 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">13</int>
-						<reference key="object" ref="164112192"/>
+						<reference key="object" ref="344440546"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="746605274"/>
-							<reference ref="769391905"/>
+							<reference ref="707098578"/>
+							<reference ref="596749301"/>
 						</object>
 						<reference key="parent" ref="957960031"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">14</int>
-						<reference key="object" ref="746605274"/>
+						<reference key="object" ref="707098578"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="598860602"/>
+							<reference ref="535484406"/>
 						</object>
-						<reference key="parent" ref="164112192"/>
+						<reference key="parent" ref="344440546"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">15</int>
-						<reference key="object" ref="769391905"/>
-						<reference key="parent" ref="164112192"/>
+						<reference key="object" ref="596749301"/>
+						<reference key="parent" ref="344440546"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">16</int>
-						<reference key="object" ref="598860602"/>
-						<reference key="parent" ref="746605274"/>
+						<reference key="object" ref="535484406"/>
+						<reference key="parent" ref="707098578"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">17</int>
-						<reference key="object" ref="793487660"/>
+						<reference key="object" ref="296379359"/>
 						<reference key="parent" ref="957960031"/>
 					</object>
 				</object>
@@ -261,7 +270,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">20</int>
+			<int key="maxID">22</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -310,6 +319,10 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">BussyViewController</string>
 					<string key="superclassName">UIViewController</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">appDelegate</string>
+						<string key="NS.object.0">BussyAppDelegate</string>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Classes/BussyViewController.h</string>

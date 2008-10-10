@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface BusStopViewController : UIViewController {
+@interface BusStopViewController : UIViewController <UITableViewDataSource> {
 
 }
 

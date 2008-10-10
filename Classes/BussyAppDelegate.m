@@ -14,6 +14,10 @@
 @synthesize window;
 @synthesize busStopsController;
 
+- (void)stopClicked:(NSString *)stopName
+{
+	[navController pushViewController:busStopController animated:YES];
+}
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {	
 	navController.viewControllers = [NSArray arrayWithObject:busStopsController];
