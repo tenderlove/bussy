@@ -16,7 +16,7 @@
 
 - (void)stopClicked:(NSString *)stopName
 {
-	[navController pushViewController:busStopController animated:YES];
+	[navController pushViewController:arrivalsController animated:YES];
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {	

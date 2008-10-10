@@ -6,10 +6,12 @@
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
-#import "BusStopViewController.h"
+#import "ArrivalsViewController.h"
 
 
-@implementation BusStopViewController
+@implementation ArrivalsViewController
+
+@synthesize arrivals;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -17,12 +19,14 @@
 	if(nil == cell)
 		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"stop"] autorelease];
 	
+	cell.text = [[self arrivals] objectAtIndex:indexPath.row];
+	
 	return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 1;
+	return [[self arrivals] count];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {

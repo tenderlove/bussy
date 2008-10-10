@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 
-@interface BusStopViewController : UIViewController <UITableViewDataSource> {
-
+@interface ArrivalsViewController : UIViewController <UITableViewDataSource> {
+	NSArray *arrivals;
 }
+
+@property (nonatomic, retain) NSArray *arrivals;
 
 @end
