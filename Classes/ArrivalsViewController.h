@@ -11,6 +11,7 @@
 
 @interface ArrivalsViewController : UIViewController <UITableViewDataSource> {
 	NSArray *arrivals;
+	IBOutlet UITableView *tableView;
 }
 
 @property (nonatomic, retain) NSArray *arrivals;

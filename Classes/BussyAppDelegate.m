@@ -8,14 +8,31 @@
 
 #import "BussyAppDelegate.h"
 #import "BussyViewController.h"
+#import "ArrivalsViewController.h"
 
 @implementation BussyAppDelegate
 
 @synthesize window;
 @synthesize busStopsController;
 
+- (NSArray *)arrivalsForStop:(NSString *)stopName
+{
+	NSArray * arrivals = nil;
+	if([@"Broadway and Denny" isEqualToString:stopName]) {
+		arrivals = [NSArray arrayWithObjects:@"8", @"8", nil];
+	}
+	if([@"Denny and Dexter" isEqualToString:stopName]) {
+		arrivals = [NSArray arrayWithObjects:@"26", @"26", nil];
+	}
+	if([@"Fremont and 34th" isEqualToString:stopName]) {
+		arrivals = [NSArray arrayWithObjects:@"32", @"23", nil];
+	}
+	return arrivals;
+}
+
 - (void)stopClicked:(NSString *)stopName
 {
+	arrivalsController.arrivals = [self arrivalsForStop:stopName];
 	[navController pushViewController:arrivalsController animated:YES];
 }
 

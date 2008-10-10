@@ -13,11 +13,18 @@
 
 @synthesize arrivals;
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)setArrivals:(NSArray *)a
 {
-	UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"stop"];
+	[arrivals release];
+	arrivals = [a retain];
+	[tableView reloadData];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	UITableViewCell * cell = [tv dequeueReusableCellWithIdentifier:@"arrival"];
 	if(nil == cell)
-		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"stop"] autorelease];
+		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"arrival"] autorelease];
 	
 	cell.text = [[self arrivals] objectAtIndex:indexPath.row];
 	
