@@ -1,0 +1,303 @@
+// !$*UTF8*$!
+{
+	1D6058900D05DD3D006BFB54 /* Bussy */ = {
+		activeExec = 0;
+		executables = (
+			934135C60E9EFABE00E3F022 /* Bussy */,
+		);
+	};
+	2899E5210DE3E06400AC0155 /* BussyViewController.xib */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {708, 1946}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1237}";
+		};
+	};
+	28D7ACF60DDB3853001CB0EB /* BussyViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {708, 375}}";
+			sepNavSelRange = "{266, 0}";
+			sepNavVisRange = "{0, 280}";
+		};
+	};
+	28D7ACF70DDB3853001CB0EB /* BussyViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {708, 1008}}";
+			sepNavSelRange = "{992, 0}";
+			sepNavVisRange = "{544, 556}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 934135C60E9EFABE00E3F022 /* Bussy */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* Bussy */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* Bussy */,
+		);
+		codeSenseManager = 934135D40E9EFAD100E3F022 /* Code sense */;
+		executables = (
+			934135C60E9EFABE00E3F022 /* Bussy */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXErrorsWarningsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXErrorsWarningsDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					300,
+					420,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXErrorsWarningsDataSource_TypeID,
+					PBXErrorsWarningsDataSource_MessageID,
+					PBXErrorsWarningsDataSource_LocationID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					530,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 245299903;
+			PBXWorkspaceStateSaveDate = 245299903;
+		};
+		perUserProjectItems = {
+			934135CE0E9EFAD100E3F022 /* PBXBookmark */ = 934135CE0E9EFAD100E3F022 /* PBXBookmark */;
+			934135CF0E9EFAD100E3F022 /* PBXTextBookmark */ = 934135CF0E9EFAD100E3F022 /* PBXTextBookmark */;
+			934135E00E9F01EF00E3F022 /* PBXTextBookmark */ = 934135E00E9F01EF00E3F022 /* PBXTextBookmark */;
+			934135E10E9F01EF00E3F022 /* PBXTextBookmark */ = 934135E10E9F01EF00E3F022 /* PBXTextBookmark */;
+			934135E20E9F01EF00E3F022 /* PBXTextBookmark */ = 934135E20E9F01EF00E3F022 /* PBXTextBookmark */;
+			934135E30E9F01EF00E3F022 /* PBXTextBookmark */ = 934135E30E9F01EF00E3F022 /* PBXTextBookmark */;
+			934135E40E9F01EF00E3F022 /* PBXTextBookmark */ = 934135E40E9F01EF00E3F022 /* PBXTextBookmark */;
+			934135E50E9F01EF00E3F022 /* PBXTextBookmark */ = 934135E50E9F01EF00E3F022 /* PBXTextBookmark */;
+			934135E60E9F01EF00E3F022 /* PBXTextBookmark */ = 934135E60E9F01EF00E3F022 /* PBXTextBookmark */;
+			934135EE0E9F02CF00E3F022 /* PBXTextBookmark */ = 934135EE0E9F02CF00E3F022 /* PBXTextBookmark */;
+			934135EF0E9F02CF00E3F022 /* PBXTextBookmark */ = 934135EF0E9F02CF00E3F022 /* PBXTextBookmark */;
+			934135F00E9F02CF00E3F022 /* PBXTextBookmark */ = 934135F00E9F02CF00E3F022 /* PBXTextBookmark */;
+			934135F10E9F02CF00E3F022 /* PBXTextBookmark */ = 934135F10E9F02CF00E3F022 /* PBXTextBookmark */;
+			934135F90E9F034300E3F022 /* PBXTextBookmark */ = 934135F90E9F034300E3F022 /* PBXTextBookmark */;
+			934135FA0E9F034300E3F022 /* PBXTextBookmark */ = 934135FA0E9F034300E3F022 /* PBXTextBookmark */;
+			934135FB0E9F034300E3F022 /* PBXTextBookmark */ = 934135FB0E9F034300E3F022 /* PBXTextBookmark */;
+			934135FC0E9F034300E3F022 /* PBXTextBookmark */ = 934135FC0E9F034300E3F022 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 934135D30E9EFAD100E3F022 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	934135C60E9EFABE00E3F022 /* Bussy */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Bussy;
+		sourceDirectories = (
+		);
+	};
+	934135CE0E9EFAD100E3F022 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 2899E5210DE3E06400AC0155 /* BussyViewController.xib */;
+	};
+	934135CF0E9EFAD100E3F022 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2899E5210DE3E06400AC0155 /* BussyViewController.xib */;
+		name = "BussyViewController.xib: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1237;
+		vrLoc = 0;
+	};
+	934135D30E9EFAD100E3F022 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	934135D40E9EFAD100E3F022 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	934135E00E9F01EF00E3F022 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2899E5210DE3E06400AC0155 /* BussyViewController.xib */;
+		name = "BussyViewController.xib: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1237;
+		vrLoc = 0;
+	};
+	934135E10E9F01EF00E3F022 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* BussyViewController.h */;
+		name = "BussyViewController.h: 11";
+		rLen = 21;
+		rLoc = 224;
+		rType = 0;
+		vrLen = 259;
+		vrLoc = 0;
+	};
+	934135E20E9F01EF00E3F022 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* BussyViewController.m */;
+		name = "BussyViewController.m: 20";
+		rLen = 0;
+		rLoc = 724;
+		rType = 0;
+		vrLen = 407;
+		vrLoc = 26;
+	};
+	934135E30E9F01EF00E3F022 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2899E5210DE3E06400AC0155 /* BussyViewController.xib */;
+		name = "BussyViewController.xib: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1237;
+		vrLoc = 0;
+	};
+	934135E40E9F01EF00E3F022 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* BussyViewController.m */;
+		name = "BussyViewController.m: 20";
+		rLen = 0;
+		rLoc = 724;
+		rType = 0;
+		vrLen = 407;
+		vrLoc = 26;
+	};
+	934135E50E9F01EF00E3F022 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* BussyViewController.h */;
+		name = "BussyViewController.h: 11";
+		rLen = 21;
+		rLoc = 224;
+		rType = 0;
+		vrLen = 259;
+		vrLoc = 0;
+	};
+	934135E60E9F01EF00E3F022 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* BussyViewController.m */;
+		name = "BussyViewController.m: 17";
+		rLen = 0;
+		rLoc = 517;
+		rType = 0;
+		vrLen = 687;
+		vrLoc = 141;
+	};
+	934135EE0E9F02CF00E3F022 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* BussyViewController.m */;
+		name = "BussyViewController.m: 17";
+		rLen = 0;
+		rLoc = 517;
+		rType = 0;
+		vrLen = 687;
+		vrLoc = 141;
+	};
+	934135EF0E9F02CF00E3F022 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* BussyViewController.h */;
+		name = "BussyViewController.h: 11";
+		rLen = 21;
+		rLoc = 224;
+		rType = 0;
+		vrLen = 259;
+		vrLoc = 0;
+	};
+	934135F00E9F02CF00E3F022 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* BussyViewController.m */;
+		name = "BussyViewController.m: 17";
+		rLen = 0;
+		rLoc = 517;
+		rType = 0;
+		vrLen = 687;
+		vrLoc = 141;
+	};
+	934135F10E9F02CF00E3F022 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* BussyViewController.h */;
+		name = "BussyViewController.h: 11";
+		rLen = 0;
+		rLoc = 266;
+		rType = 0;
+		vrLen = 280;
+		vrLoc = 0;
+	};
+	934135F90E9F034300E3F022 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* BussyViewController.h */;
+		name = "BussyViewController.h: 11";
+		rLen = 0;
+		rLoc = 266;
+		rType = 0;
+		vrLen = 280;
+		vrLoc = 0;
+	};
+	934135FA0E9F034300E3F022 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* BussyViewController.m */;
+		name = "BussyViewController.m: 17";
+		rLen = 0;
+		rLoc = 517;
+		rType = 0;
+		vrLen = 685;
+		vrLoc = 141;
+	};
+	934135FB0E9F034300E3F022 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* BussyViewController.h */;
+		name = "BussyViewController.h: 11";
+		rLen = 0;
+		rLoc = 266;
+		rType = 0;
+		vrLen = 280;
+		vrLoc = 0;
+	};
+	934135FC0E9F034300E3F022 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* BussyViewController.m */;
+		name = "BussyViewController.m: 38";
+		rLen = 0;
+		rLoc = 992;
+		rType = 0;
+		vrLen = 556;
+		vrLoc = 544;
+	};
+}
