@@ -12,19 +12,19 @@
 @implementation BussyAppDelegate
 
 @synthesize window;
-@synthesize viewController;
+@synthesize busStopsController;
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {	
 	
 	// Override point for customization after app launch	
-    [window addSubview:viewController.view];
+    [window addSubview:busStopsController.view];
 	[window makeKeyAndVisible];
 }
 
 
 - (void)dealloc {
-    [viewController release];
+    [busStopsController release];
 	[window release];
 	[super dealloc];
 }

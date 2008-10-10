@@ -9,14 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @class BussyViewController;
+@class BusStopViewController;
 
 @interface BussyAppDelegate : NSObject <UIApplicationDelegate> {
 	IBOutlet UIWindow *window;
-	IBOutlet BussyViewController *viewController;
+	IBOutlet BussyViewController *busStopsController;
+	IBOutlet UINavigationController *navController;
+	IBOutlet BusStopViewController *busStopController;
 }
 
 @property (nonatomic, retain) UIWindow *window;
-@property (nonatomic, retain) BussyViewController *viewController;
+@property (nonatomic, retain) BussyViewController *busStopsController;
 
 @end
 
