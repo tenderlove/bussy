@@ -16,9 +16,9 @@
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {	
-	
+	navController.viewControllers = [NSArray arrayWithObject:busStopsController];
 	// Override point for customization after app launch	
-    [window addSubview:busStopsController.view];
+    [window addSubview:navController.view];
 	[window makeKeyAndVisible];
 }
 
