@@ -14,6 +14,7 @@
 
 @synthesize window;
 @synthesize busStopsController;
+@synthesize bussyTabBarController;
 @synthesize stops;
 
 - (NSArray *)stops
@@ -41,13 +42,13 @@
 - (void)stopClicked:(NSString *)stopName
 {
 	arrivalsController.arrivals = [self arrivalsForStop:stopName];
-	[navController pushViewController:arrivalsController animated:YES];
+	//[navController pushViewController:arrivalsController animated:YES];
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {	
-	navController.viewControllers = [NSArray arrayWithObject:busStopsController];
+	//navController.viewControllers = [NSArray arrayWithObject:busStopsController];
 	// Override point for customization after app launch	
-    [window addSubview:navController.view];
+  [window addSubview:bussyTabBarController.view];
 	[window makeKeyAndVisible];
   [self createDefaultData];
 }

@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @class BussyAppDelegate;
+
 @interface BussyViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
 	IBOutlet BussyAppDelegate *appDelegate;
+	IBOutlet UINavigationController *navController;
 }
 
 @end

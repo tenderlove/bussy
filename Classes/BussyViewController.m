@@ -7,6 +7,7 @@
 //
 
 #import "BussyViewController.h"
+#import "BussyAppDelegate.h"
 
 @implementation BussyViewController
 
@@ -28,8 +29,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	[appDelegate stopClicked:[[tableView cellForRowAtIndexPath:indexPath] text]];
-	//NSLog(@"I was clicked: {%d, %d}", indexPath.row, indexPath.section);
+	//[appDelegate stopClicked:[[tableView cellForRowAtIndexPath:indexPath] text]];
+	NSLog(@"I was clicked: {%d, %d}", indexPath.row, indexPath.section);
 }
 
 /*
