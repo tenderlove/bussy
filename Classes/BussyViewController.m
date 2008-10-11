@@ -15,23 +15,15 @@
 	UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"stops"];
 	if(nil == cell)
 		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"stops"] autorelease];
-	switch(indexPath.row) {
-		case 0:
-			cell.text = @"Broadway and Denny";
-			break;
-		case 1:
-			cell.text = @"Denny and Dexter";
-			break;
-		case 2:
-			cell.text = @"Fremont and 34th";
-	}
+
+  cell.text = [[appDelegate stops] objectAtIndex:indexPath.row];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 3;
+  return [[appDelegate stops] count];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

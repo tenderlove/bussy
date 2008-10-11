@@ -12,6 +12,7 @@
 @class ArrivalsViewController;
 
 @interface BussyAppDelegate : NSObject <UIApplicationDelegate> {
+	NSMutableDictionary * data;
 	IBOutlet UIWindow *window;
 	IBOutlet BussyViewController *busStopsController;
 	IBOutlet UINavigationController *navController;
@@ -20,6 +21,7 @@
 
 @property (nonatomic, retain) UIWindow *window;
 @property (nonatomic, retain) BussyViewController *busStopsController;
+@property (readonly) NSArray * stops;
 
 - (void)stopClicked:(NSString *)stopName;
 
