@@ -12,9 +12,12 @@
 
 @implementation BussyViewController
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"stops"];
+	UITableViewCell * cell =
+    [tableView dequeueReusableCellWithIdentifier:@"stops"];
+
 	if(nil == cell)
 		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"stops"] autorelease];
 
@@ -23,7 +26,8 @@
 	return cell;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
 {
   return [[appDelegate stops] count];
 }

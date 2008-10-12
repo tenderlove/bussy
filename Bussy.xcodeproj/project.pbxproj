@@ -17,6 +17,8 @@
 		934135EA0E9F023200E3F022 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 934135E90E9F023200E3F022 /* CoreGraphics.framework */; };
 		9341360A0E9F071E00E3F022 /* ArrivalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 934136090E9F071E00E3F022 /* ArrivalsViewController.m */; };
 		9341360C0E9F075600E3F022 /* Arrival.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9341360B0E9F075600E3F022 /* Arrival.xib */; };
+		93A495230EA1B972005ED025 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93A495220EA1B972005ED025 /* libsqlite3.dylib */; };
+		93A495360EA1C5D1005ED025 /* bus.db in Resources */ = {isa = PBXBuildFile; fileRef = 93A495350EA1C5D1005ED025 /* bus.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		934136080E9F071E00E3F022 /* ArrivalsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrivalsViewController.h; sourceTree = "<group>"; };
 		934136090E9F071E00E3F022 /* ArrivalsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrivalsViewController.m; sourceTree = "<group>"; };
 		9341360B0E9F075600E3F022 /* Arrival.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Arrival.xib; sourceTree = "<group>"; };
+		93A495220EA1B972005ED025 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		93A495350EA1C5D1005ED025 /* bus.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = bus.db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +50,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				934135EA0E9F023200E3F022 /* CoreGraphics.framework in Frameworks */,
+				93A495230EA1B972005ED025 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +102,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				93A495350EA1C5D1005ED025 /* bus.db */,
 				2899E5210DE3E06400AC0155 /* BussyViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -108,6 +114,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				93A495220EA1B972005ED025 /* libsqlite3.dylib */,
 				934135E90E9F023200E3F022 /* CoreGraphics.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -160,6 +167,7 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* BussyViewController.xib in Resources */,
 				9341360C0E9F075600E3F022 /* Arrival.xib in Resources */,
+				93A495360EA1C5D1005ED025 /* bus.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

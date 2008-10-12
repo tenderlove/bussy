@@ -13,6 +13,7 @@
 
 @interface BussyAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
 	NSMutableDictionary * data;
+  NSMutableArray *stops;
 	IBOutlet UIWindow *window;
 	IBOutlet UITabBarController *bussyTabBarController;
 	IBOutlet BussyViewController *busStopsController;
