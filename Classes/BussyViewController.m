@@ -8,6 +8,7 @@
 
 #import "BussyViewController.h"
 #import "BussyAppDelegate.h"
+#import "ArrivalsViewController.h"
 
 @implementation BussyViewController
 
@@ -30,7 +31,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	//[appDelegate stopClicked:[[tableView cellForRowAtIndexPath:indexPath] text]];
+	NSLog(@"Controllers: {%@, %@}", navController, arrivalsController);
 	NSLog(@"I was clicked: {%d, %d}", indexPath.row, indexPath.section);
+  [navController pushViewController:arrivalsController animated:YES];
 }
 
 /*
