@@ -30,9 +30,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	//[appDelegate stopClicked:[[tableView cellForRowAtIndexPath:indexPath] text]];
-	NSLog(@"Controllers: {%@, %@}", navController, arrivalsController);
-	NSLog(@"I was clicked: {%d, %d}", indexPath.row, indexPath.section);
+	[appDelegate stopClicked:[[tableView cellForRowAtIndexPath:indexPath] text]];
   [navController pushViewController:arrivalsController animated:YES];
 }
 
