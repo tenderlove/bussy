@@ -21,7 +21,7 @@
 	if(nil == cell)
 		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"stops"] autorelease];
 
-  cell.text = [[appDelegate stops] objectAtIndex:indexPath.row];
+  cell.text = [[[appDelegate stops] objectAtIndex:indexPath.row] name];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	return cell;
 }
