@@ -9,6 +9,7 @@
 #import "BussyViewController.h"
 #import "BussyAppDelegate.h"
 #import "ArrivalsViewController.h"
+#import "Stop.h"
 
 @implementation BussyViewController
 
@@ -34,7 +35,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	[appDelegate stopClicked:[[tableView cellForRowAtIndexPath:indexPath] text]];
+  Stop * clickedStop = [[appDelegate stops] objectAtIndex:indexPath.row];
+
+  [arrivalsController setStop:clickedStop];
+  [arrivalsController setTitle:[clickedStop name]];
+
+  NSString * urlString = [[NSString alloc]
+    initWithFormat:@"http://ws.its.washington.edu:9090/transit/mybus/services/MybusService?method=getEventData&in0=30&in1=-10&in2=%d&in3=http%%3A%%2F%%2Ftransit.metrokc.gov", [clickedStop locationId]];
+  NSLog(urlString);
+
+  NSURL *url = [NSURL URLWithString: urlString];
+
+  NSURLRequest *request = [[NSURLRequest alloc] initWithURL: url];
+  NSURLConnection *connection = [[NSURLConnection alloc]
+    initWithRequest:request
+           delegate:arrivalsController];
+  [connection release];
+  [request release];
+
   [navController pushViewController:arrivalsController animated:YES];
 }
 

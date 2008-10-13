@@ -7,11 +7,13 @@
 //
 
 #import "ArrivalsViewController.h"
+#import "Stop.h"
 
 
 @implementation ArrivalsViewController
 
 @synthesize arrivals;
+@synthesize stop;
 
 - (void)setArrivals:(NSArray *)a
 {
@@ -20,7 +22,42 @@
 	[tableView reloadData];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+  NSLog(responseData);
+}
+
+- (void)connection:(NSURLConnection *)connection
+  didFailWithError:(NSError *)error
+{
+  NSLog(@"FUCK: %@", error);
+}
+
+- (void)connection:(NSURLConnection *)connection
+didReceiveResponse:(NSURLResponse *)response
+{
+  NSLog (@"got a response");
+  if(nil != responseData) [responseData release];
+
+  responseData = [[NSMutableString alloc] init];
+}
+
+- (void)connection:(NSURLConnection *)connection
+    didReceiveData:(NSData *)data
+{
+
+  NSLog (@"connectionDidReceiveData");
+  NSString *newText = [[NSString alloc]
+    initWithData:data
+        encoding:NSUTF8StringEncoding];
+  if (newText != NULL) {
+    [responseData appendString:newText];
+    [newText release];
+  }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tv
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	UITableViewCell * cell = [tv dequeueReusableCellWithIdentifier:@"arrival"];
 	if(nil == cell)
@@ -31,12 +68,14 @@
 	return cell;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
 {
 	return [[self arrivals] count];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (id)initWithNibName:(NSString *)nibNameOrNil
+               bundle:(NSBundle *)nibBundleOrNil {
 	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
 		// Initialization code
 	}
@@ -48,13 +87,6 @@
 - (void)loadView {
 }
  */
-
-/*
- If you need to do additional setup after loading the view, override viewDidLoad.
-- (void)viewDidLoad {
-}
- */
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	// Return YES for supported orientations

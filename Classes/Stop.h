@@ -21,7 +21,6 @@
               section: (NSString *)section
            locationId: (NSInteger)locationId;
 
-//+ (Stop *)findByKey: (NSInteger)key;
 + (NSMutableArray *)findAll;
 + (BOOL)initializeDb;
 

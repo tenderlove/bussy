@@ -41,7 +41,6 @@
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {	
-	//navController.viewControllers = [NSArray arrayWithObject:busStopsController];
 	// Override point for customization after app launch	
   [window addSubview:bussyTabBarController.view];
 	[window makeKeyAndVisible];
@@ -54,6 +53,5 @@
 	[window release];
 	[super dealloc];
 }
-
 
 @end
