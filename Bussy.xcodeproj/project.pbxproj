@@ -20,6 +20,9 @@
 		93A495230EA1B972005ED025 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93A495220EA1B972005ED025 /* libsqlite3.dylib */; };
 		93A495360EA1C5D1005ED025 /* bus.db in Resources */ = {isa = PBXBuildFile; fileRef = 93A495350EA1C5D1005ED025 /* bus.db */; };
 		93A495420EA2F372005ED025 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A495410EA2F372005ED025 /* Stop.m */; };
+		93A495EC0EA3251B005ED025 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93A495EB0EA3251B005ED025 /* libxml2.dylib */; };
+		93A496290EA4272C005ED025 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A496280EA4272C005ED025 /* Event.m */; };
+		93A4962C0EA42A5D005ED025 /* EventBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A4962B0EA42A5D005ED025 /* EventBuilder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,11 @@
 		93A495350EA1C5D1005ED025 /* bus.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = bus.db; sourceTree = "<group>"; };
 		93A495400EA2F372005ED025 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
 		93A495410EA2F372005ED025 /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
+		93A495EB0EA3251B005ED025 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libxml2.dylib; sourceTree = "<group>"; };
+		93A496270EA4272C005ED025 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		93A496280EA4272C005ED025 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		93A4962A0EA42A5D005ED025 /* EventBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventBuilder.h; sourceTree = "<group>"; };
+		93A4962B0EA42A5D005ED025 /* EventBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventBuilder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				934135EA0E9F023200E3F022 /* CoreGraphics.framework in Frameworks */,
 				93A495230EA1B972005ED025 /* libsqlite3.dylib in Frameworks */,
+				93A495EC0EA3251B005ED025 /* libxml2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +80,10 @@
 				934136090E9F071E00E3F022 /* ArrivalsViewController.m */,
 				93A495400EA2F372005ED025 /* Stop.h */,
 				93A495410EA2F372005ED025 /* Stop.m */,
+				93A496270EA4272C005ED025 /* Event.h */,
+				93A496280EA4272C005ED025 /* Event.m */,
+				93A4962A0EA42A5D005ED025 /* EventBuilder.h */,
+				93A4962B0EA42A5D005ED025 /* EventBuilder.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -119,6 +132,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				93A495EB0EA3251B005ED025 /* libxml2.dylib */,
 				93A495220EA1B972005ED025 /* libsqlite3.dylib */,
 				934135E90E9F023200E3F022 /* CoreGraphics.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
@@ -188,6 +202,8 @@
 				28D7ACF80DDB3853001CB0EB /* BussyViewController.m in Sources */,
 				9341360A0E9F071E00E3F022 /* ArrivalsViewController.m in Sources */,
 				93A495420EA2F372005ED025 /* Stop.m in Sources */,
+				93A496290EA4272C005ED025 /* Event.m in Sources */,
+				93A4962C0EA42A5D005ED025 /* EventBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +219,12 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Bussy_Prefix.pch;
+				HEADER_SEARCH_PATHS = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.0.sdk/usr/include/libxml2;
 				INFOPLIST_FILE = Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = Bussy;
 			};
 			name = Debug;
@@ -216,6 +237,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Bussy_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = Bussy;
 			};
 			name = Release;

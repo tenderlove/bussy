@@ -8,6 +8,8 @@
 
 #import "ArrivalsViewController.h"
 #import "Stop.h"
+#import "EventBuilder.h"
+#import "Event.h"
 
 
 @implementation ArrivalsViewController
@@ -25,6 +27,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
   NSLog(responseData);
+  [self setArrivals:[EventBuilder fromXML:responseData]];
 }
 
 - (void)connection:(NSURLConnection *)connection
@@ -63,7 +66,8 @@ didReceiveResponse:(NSURLResponse *)response
 	if(nil == cell)
 		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"arrival"] autorelease];
 	
-	cell.text = [[self arrivals] objectAtIndex:indexPath.row];
+  Event * event = [[self arrivals] objectAtIndex:indexPath.row];
+	cell.text = [event destination];
 	
 	return cell;
 }
