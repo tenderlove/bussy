@@ -110,12 +110,12 @@ NSString *dbFilePath;
       initWithInt: primaryKeyValueI];
     
     // Name column
-    const unsigned char* itemValueC = sqlite3_column_text (dbps, 1);
+    const char* itemValueC = (const char *) sqlite3_column_text (dbps, 1);
     NSString *name = [[NSString alloc]
       initWithCString:itemValueC encoding: NSUTF8StringEncoding];
 
     // Section column
-    itemValueC = sqlite3_column_text (dbps, 2);
+    itemValueC = (const char *) sqlite3_column_text (dbps, 2);
     NSString *section = [[NSString alloc]
       initWithCString:itemValueC encoding: NSUTF8StringEncoding];
 
