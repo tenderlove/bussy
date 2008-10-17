@@ -100,10 +100,10 @@ didReceiveResponse:(NSURLResponse *)response
   {
     case 0:
       components = [[event destination] componentsSeparatedByString:@" - "];
-      if([components count] > 1)
+      if([components count] > 1) {
         cell.text = [components objectAtIndex:1];
-      else
-        cell.text = [components objectAtIndex:0];
+      } else
+        cell.text = [event destination];
       return cell;
   }
 	

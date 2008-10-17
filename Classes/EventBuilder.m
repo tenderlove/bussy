@@ -22,6 +22,7 @@ void startElement(void *ctx, const xmlChar *name, const xmlChar **attrs)
   EventBuilder * self = (EventBuilder *)ctx;
 
   NSString * tagName = [[NSString alloc] initWithCString:(const char *)name];
+  NSLog(@"tag name: %@", tagName);
 
     //[responseData appendString:newText];
   if([tagName isEqualToString:@"multiRef"]) {
@@ -52,7 +53,6 @@ void endElement(void *ctx, const xmlChar *name)
   }
 
   if([tagName isEqualToString:@"destination"]) {
-    NSLog([self characterBuffer]);
     [[self currentEvent] setDestination:(NSString *)[self characterBuffer]];
   }
 

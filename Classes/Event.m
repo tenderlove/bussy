@@ -31,4 +31,12 @@
   [super dealloc];
 }
 
+- (NSString *)description
+{
+  NSString *result;
+  result = [[NSString alloc] initWithFormat:@"route = '%@' destination = '%@' schedTime = '%@' goalTime = '%@' goalDeviation = '%@' type = '%@' distanceToGoal = '%@'", route, destination, schedTime, goalTime, goalDeviation, type, distanceToGoal];
+  [result autorelease];
+  return result;
+}
+
 @end
