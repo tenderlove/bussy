@@ -22,7 +22,6 @@ void startElement(void *ctx, const xmlChar *name, const xmlChar **attrs)
   EventBuilder * self = (EventBuilder *)ctx;
 
   NSString * tagName = [[NSString alloc] initWithCString:(const char *)name];
-  NSLog(@"tag name: %@", tagName);
 
     //[responseData appendString:newText];
   if([tagName isEqualToString:@"multiRef"]) {
@@ -31,12 +30,13 @@ void startElement(void *ctx, const xmlChar *name, const xmlChar **attrs)
   [tagName release];
 
   [self setCharacterBuffer:[[NSMutableString alloc] init]];
-
 }
 
 void charactersFunction(void *ctx, const xmlChar *ch, int len)
 {
   EventBuilder * self = (EventBuilder *)ctx;
+  if(nil == [self characterBuffer]) return;
+
   NSString * newText = [[NSString alloc] initWithCString:(const char *)ch
                                                   length:len];
   [[self characterBuffer] appendString:newText];
@@ -105,6 +105,7 @@ void endElement(void *ctx, const xmlChar *name)
   }
   */
 
+  [self setCharacterBuffer: nil];
   [tagName release];
 }
 
