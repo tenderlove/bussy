@@ -83,6 +83,8 @@ didReceiveResponse:(NSURLResponse *)response
 - (UITableViewCell *)tableView:(UITableView *)tv
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  NSArray * components;
+
   if(YES == loadingBusData)
     return [self loadingCell];
 
@@ -93,22 +95,59 @@ didReceiveResponse:(NSURLResponse *)response
 	if(nil == cell)
 		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"arrival"] autorelease];
 	
-  Event * event = [[self arrivals] objectAtIndex:indexPath.row];
-	cell.text = [event destination];
+  Event * event = [[self arrivals] objectAtIndex:indexPath.section];
+  switch(indexPath.row)
+  {
+    case 0:
+      components = [[event destination] componentsSeparatedByString:@" - "];
+      if([components count] > 1)
+        cell.text = [components objectAtIndex:1];
+      else
+        cell.text = [components objectAtIndex:0];
+      return cell;
+  }
 	
 	return cell;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView
- numberOfRowsInSection:(NSInteger)section
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
   if(YES == loadingBusData)
     return 1;
 
   /* We didn't get any busses, so we'll display the sad bus stop message. */
+  if([[self arrivals] count] == 0)
+    return 1;
+
+	return [[self arrivals] count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView
+titleForHeaderInSection:(NSInteger)section
+{
+  if(YES == loadingBusData)
+    return @"I love you!";
+
+  if([[self arrivals] count] == 0)
+    return @"Cue sad trombone..";
+
+  NSString * dest = [[[self arrivals] objectAtIndex:section] destination];
+  NSArray * components = [dest componentsSeparatedByString:@" - "];
+  return (NSString *)[components objectAtIndex:0];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
+{
+  return 1;
+  /*
+  if(YES == loadingBusData)
+    return 1;
+
   if([[self arrivals] count] == 0) return 1;
 
 	return [[self arrivals] count];
+  */
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil
