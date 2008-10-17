@@ -39,9 +39,16 @@
   return cell;
 }
 
+- (UITableViewCell *)noArrivalsCell
+{
+	UITableViewCell * cell =
+    [tableView dequeueReusableCellWithIdentifier:@"noArrivalsCell"];
+  if(nil == cell) cell = noArrivalsCell;
+  return cell;
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-  NSLog(@"Setting NO");
   [self setLoadingBusData:NO];
   [self setArrivals:[EventBuilder fromXML:responseData]];
 }
@@ -64,8 +71,6 @@ didReceiveResponse:(NSURLResponse *)response
 - (void)connection:(NSURLConnection *)connection
     didReceiveData:(NSData *)data
 {
-
-  NSLog (@"connectionDidReceiveData");
   NSString *newText = [[NSString alloc]
     initWithData:data
         encoding:NSUTF8StringEncoding];
@@ -80,6 +85,9 @@ didReceiveResponse:(NSURLResponse *)response
 {
   if(YES == loadingBusData)
     return [self loadingCell];
+
+  if([[self arrivals] count] == 0)
+    return [self noArrivalsCell];
 
 	UITableViewCell * cell = [tv dequeueReusableCellWithIdentifier:@"arrival"];
 	if(nil == cell)
@@ -96,6 +104,9 @@ didReceiveResponse:(NSURLResponse *)response
 {
   if(YES == loadingBusData)
     return 1;
+
+  /* We didn't get any busses, so we'll display the sad bus stop message. */
+  if([[self arrivals] count] == 0) return 1;
 
 	return [[self arrivals] count];
 }

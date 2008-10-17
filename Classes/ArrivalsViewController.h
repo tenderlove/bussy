@@ -17,6 +17,7 @@
   Stop * stop;
   NSMutableString *responseData;
   IBOutlet UITableViewCell *loadingCell;
+  IBOutlet UITableViewCell *noArrivalsCell;
   BOOL loadingBusData;
 }
 

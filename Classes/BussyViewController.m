@@ -42,11 +42,9 @@
 
   NSString * urlString = [[NSString alloc]
     initWithFormat:@"http://ws.its.washington.edu:9090/transit/mybus/services/MybusService?method=getEventData&in0=30&in1=-10&in2=%d&in3=http%%3A%%2F%%2Ftransit.metrokc.gov", [clickedStop locationId]];
-  NSLog(urlString);
 
   NSURL *url = [NSURL URLWithString: urlString];
 
-  NSLog(@"Setting YES");
   [arrivalsController setLoadingBusData:YES];
 
   NSURLRequest *request = [[NSURLRequest alloc] initWithURL: url];
