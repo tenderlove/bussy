@@ -19,6 +19,37 @@
 @synthesize destination;
 @synthesize route;
 
+- (NSString *)title
+{
+  NSString *title = [NSString stringWithFormat:@"%@ - %@",
+           route, [self direction]];
+  return title;
+}
+
+- (NSString *)direction
+{
+  NSArray * components = [destination componentsSeparatedByString:@" - "];
+  NSString * direction = [components objectAtIndex:0];
+  return direction;
+}
+
+- (NSString *)destination
+{
+  NSArray * components = [destination componentsSeparatedByString:@" - "];
+  if([components count] > 1)
+    return [components objectAtIndex:1];
+
+  return [components objectAtIndex:0];
+}
+
+- (NSString *)description
+{
+  NSString *result;
+  result = [[NSString alloc] initWithFormat:@"route = '%@' destination = '%@' schedTime = '%@' goalTime = '%@' goalDeviation = '%@' type = '%@' distanceToGoal = '%@'", route, destination, schedTime, goalTime, goalDeviation, type, distanceToGoal];
+  [result autorelease];
+  return result;
+}
+
 - (void)dealloc
 {
   [goalDeviation release];
@@ -29,14 +60,6 @@
   [destination release];
   [route release];
   [super dealloc];
-}
-
-- (NSString *)description
-{
-  NSString *result;
-  result = [[NSString alloc] initWithFormat:@"route = '%@' destination = '%@' schedTime = '%@' goalTime = '%@' goalDeviation = '%@' type = '%@' distanceToGoal = '%@'", route, destination, schedTime, goalTime, goalDeviation, type, distanceToGoal];
-  [result autorelease];
-  return result;
 }
 
 @end

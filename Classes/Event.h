@@ -37,4 +37,7 @@
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSString * destination;
 
+- (NSString *)direction;
+- (NSString *)title;
+
 @end

@@ -83,8 +83,6 @@ didReceiveResponse:(NSURLResponse *)response
 - (UITableViewCell *)tableView:(UITableView *)tv
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  NSArray * components;
-
   if(YES == loadingBusData)
     return [self loadingCell];
 
@@ -98,12 +96,19 @@ didReceiveResponse:(NSURLResponse *)response
   Event * event = [[self arrivals] objectAtIndex:indexPath.section];
   switch(indexPath.row)
   {
+    int goalDeviation;
     case 0:
-      components = [[event destination] componentsSeparatedByString:@" - "];
-      if([components count] > 1) {
-        cell.text = [components objectAtIndex:1];
-      } else
-        cell.text = [event destination];
+      cell.text = [event destination];
+      return cell;
+    case 1:
+      goalDeviation = [[event goalDeviation] intValue] / 60;
+      if(goalDeviation == 0) {
+        cell.text = @"On Time";
+      } else if(goalDeviation < 0) {
+        cell.text = @"Early";
+      } else {
+        cell.text = @"Late";
+      }
       return cell;
   }
 	
@@ -131,23 +136,19 @@ titleForHeaderInSection:(NSInteger)section
   if([[self arrivals] count] == 0)
     return @"Cue sad trombone..";
 
-  NSString * dest = [[[self arrivals] objectAtIndex:section] destination];
-  NSArray * components = [dest componentsSeparatedByString:@" - "];
-  return (NSString *)[components objectAtIndex:0];
+  NSLog(@"%@", [[self arrivals] objectAtIndex:section]);
+  return [[[self arrivals] objectAtIndex:section] title];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-  return 1;
-  /*
   if(YES == loadingBusData)
     return 1;
 
   if([[self arrivals] count] == 0) return 1;
 
-	return [[self arrivals] count];
-  */
+  return 2;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil
