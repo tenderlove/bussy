@@ -46,6 +46,9 @@
 
   NSURL *url = [NSURL URLWithString: urlString];
 
+  NSLog(@"Setting YES");
+  [arrivalsController setLoadingBusData:YES];
+
   NSURLRequest *request = [[NSURLRequest alloc] initWithURL: url];
   NSURLConnection *connection = [[NSURLConnection alloc]
     initWithRequest:request

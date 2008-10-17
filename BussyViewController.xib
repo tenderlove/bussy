@@ -173,7 +173,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>BussyViewController</string>
 					<string>UIResponder</string>
-					<string>{{367, 123}, {320, 460}}</string>
+					<string>{{37, 296}, {320, 460}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -199,7 +199,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">44</int>
+			<int key="maxID">52</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -243,19 +243,21 @@
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">BussyViewController</string>
-					<string key="superclassName">UIViewController</string>
+					<string key="superclassName">UITableViewController</string>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>appDelegate</string>
 							<string>arrivalsController</string>
+							<string>loadingCell</string>
 							<string>navController</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>BussyAppDelegate</string>
 							<string>ArrivalsViewController</string>
+							<string>UITableViewCell</string>
 							<string>UINavigationController</string>
 						</object>
 					</object>

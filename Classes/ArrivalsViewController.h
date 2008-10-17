@@ -16,9 +16,14 @@
 	IBOutlet UITableView *tableView;
   Stop * stop;
   NSMutableString *responseData;
+  IBOutlet UITableViewCell *loadingCell;
+  BOOL loadingBusData;
 }
 
 @property (nonatomic, retain) NSArray *arrivals;
 @property (nonatomic, retain) Stop *stop;
+@property BOOL loadingBusData;
+
+- (UITableViewCell *)loadingCell;
 
 @end

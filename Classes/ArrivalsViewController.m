@@ -16,6 +16,13 @@
 
 @synthesize arrivals;
 @synthesize stop;
+@synthesize loadingBusData;
+
+- (void)setLoadingBusData:(BOOL)a
+{
+  loadingBusData = a;
+	[tableView reloadData];
+}
 
 - (void)setArrivals:(NSArray *)a
 {
@@ -24,9 +31,18 @@
 	[tableView reloadData];
 }
 
+- (UITableViewCell *)loadingCell
+{
+	UITableViewCell * cell =
+    [tableView dequeueReusableCellWithIdentifier:@"loadingCell"];
+  if(nil == cell) cell = loadingCell;
+  return cell;
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-  NSLog(responseData);
+  NSLog(@"Setting NO");
+  [self setLoadingBusData:NO];
   [self setArrivals:[EventBuilder fromXML:responseData]];
 }
 
@@ -62,6 +78,9 @@ didReceiveResponse:(NSURLResponse *)response
 - (UITableViewCell *)tableView:(UITableView *)tv
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  if(YES == loadingBusData)
+    return [self loadingCell];
+
 	UITableViewCell * cell = [tv dequeueReusableCellWithIdentifier:@"arrival"];
 	if(nil == cell)
 		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"arrival"] autorelease];
@@ -75,6 +94,9 @@ didReceiveResponse:(NSURLResponse *)response
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
+  if(YES == loadingBusData)
+    return 1;
+
 	return [[self arrivals] count];
 }
 
