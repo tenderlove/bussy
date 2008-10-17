@@ -19,18 +19,20 @@
 */
 
 @interface Event : NSObject {
-  NSInteger goalDeviation;
-  NSInteger schedTime;
-  NSInteger goalTime;
+  NSNumber * goalDeviation;
+  NSNumber * schedTime;
+  NSNumber * goalTime;
+  NSNumber * distanceToGoal;
+  NSNumber * route;
   NSString * type;
-  NSInteger distanceToGoal;
   NSString * destination;
 }
 
-@property NSInteger goalDeviation;
-@property NSInteger schedTime;
-@property NSInteger goalTime;
-@property NSInteger distanceToGoal;
+@property (nonatomic, retain) NSNumber * goalDeviation;
+@property (nonatomic, retain) NSNumber * schedTime;
+@property (nonatomic, retain) NSNumber * goalTime;
+@property (nonatomic, retain) NSNumber * distanceToGoal;
+@property (nonatomic, retain) NSNumber * route;
 
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSString * destination;

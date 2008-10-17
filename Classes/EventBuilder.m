@@ -31,32 +31,6 @@ void startElement(void *ctx, const xmlChar *name, const xmlChar **attrs)
 
   [self setCharacterBuffer:[[NSMutableString alloc] init]];
 
-/*
-<goalDeviation xsi:type="xsd:int">43200</goalDeviation>
-<schedTime xsi:type="xsd:int">66586</schedTime>
-<timestamp xsi:type="xsd:long">1223688694648</timestamp>
-<goalTime xsi:type="xsd:int">-1</goalTime>
-<type xsi:type="xsd:string">d</type>
-<distanceToGoal xsi:type="xsd:int">-717</distanceToGoal>
-<destination xsi:type="xsd:string">North Seattle - Leary Ave NW and NW Vernon Pl</destination>
-*/
-
-  /*
-  if([tagName isEqualToString:@"goalDeviation"]) {
-  }
-  if([tagName isEqualToString:@"schedTime"]) {
-  }
-  if([tagName isEqualToString:@"timestamp"]) {
-  }
-  if([tagName isEqualToString:@"goalTime"]) {
-  }
-  if([tagName isEqualToString:@"type"]) {
-  }
-  if([tagName isEqualToString:@"distanceToGoal"]) {
-  }
-  if([tagName isEqualToString:@"destination"]) {
-  }
-  */
 }
 
 void charactersFunction(void *ctx, const xmlChar *ch, int len)
@@ -81,12 +55,53 @@ void endElement(void *ctx, const xmlChar *name)
     NSLog([self characterBuffer]);
     [[self currentEvent] setDestination:(NSString *)[self characterBuffer]];
   }
+
   if([tagName isEqualToString:@"type"]) {
     [[self currentEvent] setType:(NSString *)[self characterBuffer]];
   }
 
+  if([tagName isEqualToString:@"goalDeviation"]) {
+    NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
+    NSNumber * number = [formatter numberFromString:[self characterBuffer]];
+    [[self currentEvent] setGoalDeviation:number];
+    [formatter release];
+  }
+
+  if([tagName isEqualToString:@"schedTime"]) {
+    NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
+    NSNumber * number = [formatter numberFromString:[self characterBuffer]];
+    [[self currentEvent] setSchedTime:number];
+    [formatter release];
+  }
+
+  if([tagName isEqualToString:@"goalTime"]) {
+    NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
+    NSNumber * number = [formatter numberFromString:[self characterBuffer]];
+    [[self currentEvent] setGoalTime:number];
+    [formatter release];
+  }
+
+  if([tagName isEqualToString:@"distanceToGoal"]) {
+    NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
+    NSNumber * number = [formatter numberFromString:[self characterBuffer]];
+    [[self currentEvent] setDistanceToGoal:number];
+    [formatter release];
+  }
+
+  if([tagName isEqualToString:@"route"]) {
+    NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
+    NSNumber * number = [formatter numberFromString:[self characterBuffer]];
+    [[self currentEvent] setRoute:number];
+    [formatter release];
+  }
+
   /*
-  if([currentEvent respondsToSelector:NSSelectorFromString(tagName)]) {
+  if([[self currentEvent] respondsToSelector:NSSelectorFromString(tagName)]) {
+    NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
+    NSNumber * number = [formatter numberFromString:[self characterBuffer]];
+    [[self currentEvent] performSelector:NSSelectorFromString(setter)
+                              withObject:number];
+    [formatter release];
   }
   */
 

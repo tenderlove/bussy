@@ -17,11 +17,17 @@
 @synthesize type;
 @synthesize distanceToGoal;
 @synthesize destination;
+@synthesize route;
 
 - (void)dealloc
 {
+  [goalDeviation release];
+  [schedTime release];
+  [goalTime release];
   [type release];
+  [distanceToGoal release];
   [destination release];
+  [route release];
   [super dealloc];
 }
 
