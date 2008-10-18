@@ -39,5 +39,7 @@
 
 - (NSString *)direction;
 - (NSString *)title;
+- (NSComparisonResult)schedTimeCompare:(Event *)other;
+- (NSComparisonResult)routeCompare:(Event *)other;
 
 @end

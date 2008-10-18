@@ -49,9 +49,11 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-  NSLog(responseData);
   [self setLoadingBusData:NO];
-  [self setArrivals:[EventBuilder fromXML:responseData]];
+  NSArray * array = [EventBuilder fromXML:responseData];
+  NSArray * sorted = [array sortedArrayUsingSelector:@selector(schedTimeCompare:)];
+  [array release];
+  [self setArrivals:sorted];
 }
 
 - (void)connection:(NSURLConnection *)connection
@@ -98,19 +100,33 @@ didReceiveResponse:(NSURLResponse *)response
   [cell setTextColor:[UIColor blackColor]];
   switch(indexPath.row)
   {
-    int goalDeviation, schedTime, minute, hour;
+    int goalDeviation, schedTime, minute, hour, distanceToGoal;
     NSMutableString * timeString;
     case 0:
       cell.text = [event destination];
       return cell;
     case 1:
-      schedTime = [[event schedTime] intValue];
+      distanceToGoal = [[event distanceToGoal] intValue];
+      if(distanceToGoal < 0) {
+        schedTime = [[event goalTime] intValue];
+      } else {
+        schedTime = [[event schedTime] intValue];
+      }
+
       minute = (schedTime / 60) % 60;
       hour = (schedTime / 60) / 60;
-      timeString = [NSMutableString
-        stringWithFormat:@"Scheduled for %d:%02d ",
-          hour > 12 ? hour - 12 : hour, minute
-      ];
+
+      if(distanceToGoal < 0) {
+        timeString = [NSMutableString
+          stringWithFormat:@"Departed at %d:%02d ",
+            hour > 12 ? hour - 12 : hour, minute
+        ];
+      } else {
+        timeString = [NSMutableString
+          stringWithFormat:@"Scheduled for %d:%02d ",
+            hour > 12 ? hour - 12 : hour, minute
+        ];
+      }
       if(hour > 12) {
         [timeString appendString:@"pm"];
       } else {

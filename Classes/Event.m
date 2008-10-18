@@ -50,6 +50,28 @@
   return result;
 }
 
+- (NSComparisonResult)schedTimeCompare:(Event *)other
+{
+  if([schedTime intValue] < [[other schedTime] intValue])
+    return NSOrderedAscending;
+
+  if([schedTime intValue] > [[other schedTime] intValue])
+    return NSOrderedDescending;
+
+  return NSOrderedSame;
+}
+
+- (NSComparisonResult)routeCompare:(Event *)other
+{
+  if([schedTime route] < [[other route] intValue])
+    return NSOrderedAscending;
+
+  if([schedTime route] > [[other route] intValue])
+    return NSOrderedDescending;
+
+  return NSOrderedSame;
+}
+
 - (void)dealloc
 {
   [goalDeviation release];
