@@ -40,6 +40,7 @@
 - (NSString *)direction;
 - (NSString *)title;
 - (NSComparisonResult)schedTimeCompare:(Event *)other;
+- (NSComparisonResult)goalTimeCompare:(Event *)other;
 - (NSComparisonResult)routeCompare:(Event *)other;
 
 @end

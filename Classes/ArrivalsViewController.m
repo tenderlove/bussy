@@ -51,7 +51,7 @@
 {
   [self setLoadingBusData:NO];
   NSArray * array = [EventBuilder fromXML:responseData];
-  NSArray * sorted = [array sortedArrayUsingSelector:@selector(schedTimeCompare:)];
+  NSArray * sorted = [array sortedArrayUsingSelector:@selector(goalTimeCompare:)];
   [array release];
   [self setArrivals:sorted];
 }
@@ -185,6 +185,13 @@ titleForHeaderInSection:(NSInteger)section
     return 1;
 
   if([[self arrivals] count] == 0) return 1;
+
+  Event * event = [[self arrivals] objectAtIndex:section];
+
+  // Only show the destination and the departure time if the bus
+  // has already departed.
+  if([[event distanceToGoal] intValue] < 0)
+    return 2;
 
   return 3;
 }

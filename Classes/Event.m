@@ -8,7 +8,6 @@
 
 #import "Event.h"
 
-
 @implementation Event
 
 @synthesize goalDeviation;
@@ -50,6 +49,17 @@
   return result;
 }
 
+- (NSComparisonResult)goalTimeCompare:(Event *)other
+{
+  if([goalTime intValue] < [[other goalTime] intValue])
+    return NSOrderedAscending;
+
+  if([goalTime intValue] > [[other goalTime] intValue])
+    return NSOrderedDescending;
+
+  return NSOrderedSame;
+}
+
 - (NSComparisonResult)schedTimeCompare:(Event *)other
 {
   if([schedTime intValue] < [[other schedTime] intValue])
@@ -63,10 +73,10 @@
 
 - (NSComparisonResult)routeCompare:(Event *)other
 {
-  if([schedTime route] < [[other route] intValue])
+  if([route intValue] < [[other route] intValue])
     return NSOrderedAscending;
 
-  if([schedTime route] > [[other route] intValue])
+  if([route intValue] > [[other route] intValue])
     return NSOrderedDescending;
 
   return NSOrderedSame;
