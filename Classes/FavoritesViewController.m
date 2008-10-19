@@ -45,7 +45,7 @@
 -       (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  Stop * clickedStop = [[appDelegate stops] objectAtIndex:indexPath.row];
+  Stop * clickedStop = [stops objectAtIndex:indexPath.row];
 
   [arrivalsController setStop:clickedStop];
   [arrivalsController setTitle:[clickedStop name]];

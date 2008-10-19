@@ -224,6 +224,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos2.1]" = "iPhone Developer: Aaron Patterson";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -236,6 +237,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = Bussy;
+				"PROVISIONING_PROFILE[sdk=iphoneos2.1]" = "97DE4F1F-B35E-4D39-95AF-7879A301D879";
 			};
 			name = Debug;
 		};

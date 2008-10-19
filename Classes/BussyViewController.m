@@ -47,6 +47,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
   [Event fetchEventsWithLocationId:[clickedStop locationId]
                           delegate:arrivalsController];
 
+  arrivalsController.navigationItem.rightBarButtonItem = nil;
   if(! [Stop findFavoriteByKey:[clickedStop key]]) {
     arrivalsController.navigationItem.rightBarButtonItem =
       [[[UIBarButtonItem alloc]
