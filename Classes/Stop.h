@@ -21,7 +21,11 @@
               section: (NSString *)section
            locationId: (NSInteger)locationId;
 
++ (Stop *)findFavoriteByKey:(NSNumber *)key;
++ (void)createFavoriteStop:(NSNumber *)key;
++ (NSMutableArray *)findAllWhere:(NSString *)conditions;
 + (NSMutableArray *)findAll;
++ (NSMutableArray *)findAllFavorites;
 + (BOOL)initializeDb;
 
 @property (readonly, retain) NSNumber * key;

@@ -10,21 +10,22 @@
 #import "BussyAppDelegate.h"
 #import "ArrivalsViewController.h"
 #import "Stop.h"
+#import "Event.h"
 
 @implementation BussyViewController
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	UITableViewCell * cell =
+  UITableViewCell * cell =
     [tableView dequeueReusableCellWithIdentifier:@"stops"];
 
-	if(nil == cell)
-		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"stops"] autorelease];
+  if(nil == cell)
+    cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"stops"] autorelease];
 
   cell.text = [[[appDelegate stops] objectAtIndex:indexPath.row] name];
-	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	return cell;
+  cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+  return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
@@ -33,27 +34,26 @@
   return [[appDelegate stops] count];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-       (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   Stop * clickedStop = [[appDelegate stops] objectAtIndex:indexPath.row];
 
   [arrivalsController setStop:clickedStop];
   [arrivalsController setTitle:[clickedStop name]];
-
-  NSString * urlString = [[NSString alloc]
-    initWithFormat:@"http://ws.its.washington.edu:9090/transit/mybus/services/MybusService?method=getEventData&in0=30&in1=-10&in2=%d&in3=http%%3A%%2F%%2Ftransit.metrokc.gov", [clickedStop locationId]];
-
-  NSURL *url = [NSURL URLWithString: urlString];
-
+  [arrivalsController setStopKey:[clickedStop key]];
   [arrivalsController setLoadingBusData:YES];
 
-  NSURLRequest *request = [[NSURLRequest alloc] initWithURL: url];
-  NSURLConnection *connection = [[NSURLConnection alloc]
-    initWithRequest:request
-           delegate:arrivalsController];
-  [connection release];
-  [request release];
+  [Event fetchEventsWithLocationId:[clickedStop locationId]
+                          delegate:arrivalsController];
 
+  if(! [Stop findFavoriteByKey:[clickedStop key]]) {
+    arrivalsController.navigationItem.rightBarButtonItem =
+      [[[UIBarButtonItem alloc]
+      initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks
+                           target:arrivalsController
+                           action:@selector(addFavorite:)] autorelease];
+  }
   [navController pushViewController:arrivalsController animated:YES];
 }
 
@@ -66,25 +66,25 @@
 /*
  Implement viewDidLoad if you need to do additional setup after loading the view.
 - (void)viewDidLoad {
-	[super viewDidLoad];
+  [super viewDidLoad];
 }
  */
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
+  // Return YES for supported orientations
+  return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 
 - (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-	// Release anything that's not essential, such as cached data
+  [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
+  // Release anything that's not essential, such as cached data
 }
 
 
 - (void)dealloc {
-	[super dealloc];
+  [super dealloc];
 }
 
 @end

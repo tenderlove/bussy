@@ -37,6 +37,9 @@
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSString * destination;
 
++ (void) fetchEventsWithLocationId:(NSInteger)locationId
+                          delegate:(id)delegate;
+
 - (NSString *)direction;
 - (NSString *)title;
 - (NSComparisonResult)schedTimeCompare:(Event *)other;

@@ -18,6 +18,22 @@
 @synthesize destination;
 @synthesize route;
 
++ (void) fetchEventsWithLocationId:(NSInteger)locationId
+                          delegate:(id)delegate
+{
+  NSString * urlString = [[NSString alloc]
+    initWithFormat:@"http://ws.its.washington.edu:9090/transit/mybus/services/MybusService?method=getEventData&in0=30&in1=-10&in2=%d&in3=http%%3A%%2F%%2Ftransit.metrokc.gov", locationId];
+
+  NSURL *url = [NSURL URLWithString: urlString];
+
+  NSURLRequest *request = [[NSURLRequest alloc] initWithURL: url];
+  NSURLConnection *connection = [[NSURLConnection alloc]
+    initWithRequest:request
+           delegate:delegate];
+  [connection release];
+  [request release];
+}
+
 - (NSString *)title
 {
   NSString *title = [NSString stringWithFormat:@"%@ - %@",

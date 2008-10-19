@@ -24,6 +24,7 @@
 		93A496290EA4272C005ED025 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A496280EA4272C005ED025 /* Event.m */; };
 		93A4962C0EA42A5D005ED025 /* EventBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A4962B0EA42A5D005ED025 /* EventBuilder.m */; };
 		93F2049F0EA9B721004CF17F /* Stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 93F2049E0EA9B721004CF17F /* Stop.png */; };
+		93F2051A0EAA64EA004CF17F /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F205190EAA64EA004CF17F /* FavoritesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,8 @@
 		93A4962A0EA42A5D005ED025 /* EventBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventBuilder.h; sourceTree = "<group>"; };
 		93A4962B0EA42A5D005ED025 /* EventBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventBuilder.m; sourceTree = "<group>"; };
 		93F2049E0EA9B721004CF17F /* Stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stop.png; sourceTree = "<group>"; };
+		93F205180EAA64EA004CF17F /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
+		93F205190EAA64EA004CF17F /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				93A496280EA4272C005ED025 /* Event.m */,
 				93A4962A0EA42A5D005ED025 /* EventBuilder.h */,
 				93A4962B0EA42A5D005ED025 /* EventBuilder.m */,
+				93F205180EAA64EA004CF17F /* FavoritesViewController.h */,
+				93F205190EAA64EA004CF17F /* FavoritesViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 				93A495420EA2F372005ED025 /* Stop.m in Sources */,
 				93A496290EA4272C005ED025 /* Event.m in Sources */,
 				93A4962C0EA42A5D005ED025 /* EventBuilder.m in Sources */,
+				93F2051A0EAA64EA004CF17F /* FavoritesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@
 
 
 @class Stop;
+@class FavoritesViewController;
 
 @interface ArrivalsViewController : UIViewController <UITableViewDataSource> {
 	NSArray *arrivals;
@@ -18,12 +19,15 @@
   NSMutableString *responseData;
   IBOutlet UITableViewCell *loadingCell;
   IBOutlet UITableViewCell *noArrivalsCell;
+  IBOutlet FavoritesViewController *favoritesController;
   BOOL loadingBusData;
+  NSNumber * stopKey;
 }
 
 @property (nonatomic, retain) NSArray *arrivals;
 @property (nonatomic, retain) Stop *stop;
 @property BOOL loadingBusData;
+@property (nonatomic, retain) NSNumber * stopKey;
 
 - (UITableViewCell *)loadingCell;
 

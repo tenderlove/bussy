@@ -42,6 +42,7 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {	
 	// Override point for customization after app launch	
+  [Stop initializeDb];
   [window addSubview:bussyTabBarController.view];
 	[window makeKeyAndVisible];
 }

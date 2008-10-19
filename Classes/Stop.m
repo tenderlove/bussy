@@ -26,42 +26,66 @@ NSString *dbFilePath;
 
 + (BOOL) initializeDb
 {
-	NSLog (@"initializeDB");
+  NSLog (@"initializeDB");
 
-	// look to see if DB is in known location (~/Documents/$DATABASE_FILE_NAME)
+  // look to see if DB is in known location (~/Documents/$DATABASE_FILE_NAME)
   //START:code.DatabaseShoppingList.findDocumentsDirectory
-	NSArray *searchPaths =
-		NSSearchPathForDirectoriesInDomains
-		(NSDocumentDirectory, NSUserDomainMask, YES);
+  NSArray *searchPaths =
+    NSSearchPathForDirectoriesInDomains
+    (NSDocumentDirectory, NSUserDomainMask, YES);
 
-	NSString *documentFolderPath = [searchPaths objectAtIndex: 0];
-	dbFilePath = [documentFolderPath stringByAppendingPathComponent:
-				  DATABASE_FILE_NAME];
+  NSString *documentFolderPath = [searchPaths objectAtIndex: 0];
+  dbFilePath = [documentFolderPath stringByAppendingPathComponent:
+          DATABASE_FILE_NAME];
 
-	[dbFilePath retain];
+  NSString *backupDbPath = [[NSBundle mainBundle]
+    pathForResource:DATABASE_RESOURCE_NAME
+    ofType:DATABASE_RESOURCE_TYPE];
 
-	if (! [[NSFileManager defaultManager] fileExistsAtPath: dbFilePath]) {
-		// didn't find db, need to copy
-		NSString *backupDbPath = [[NSBundle mainBundle]
-			pathForResource:DATABASE_RESOURCE_NAME
-			ofType:DATABASE_RESOURCE_TYPE];
-		if (backupDbPath == nil) {
-			// couldn't find backup db to copy, bail
-      NSLog(@"Couldn't find database");
-			return NO;
-		} else {
-			BOOL copiedBackupDb = [[NSFileManager defaultManager]
-				copyItemAtPath:backupDbPath
-				toPath:dbFilePath
-				error:nil];
-			if (! copiedBackupDb) {
-        NSLog(@"Couldn't copy database");
-				return NO;
-			}
-		}
-	}
+  if(nil == backupDbPath) {
+    NSLog(@"Couldn't find database");
+    return NO;
+  }
+
+  [dbFilePath retain];
+
+  BOOL fileExists =
+    [[NSFileManager defaultManager] fileExistsAtPath: dbFilePath];
+
+  BOOL sourceIsNewer = NO;
+
+  if(fileExists) {
+    NSDictionary * destStat = 
+      [[NSFileManager defaultManager]
+        attributesOfItemAtPath:dbFilePath error:NULL];
+    NSDictionary * srcStat = 
+      [[NSFileManager defaultManager]
+        attributesOfItemAtPath:backupDbPath error:NULL];
+
+    NSDate * srcMTime = [srcStat objectForKey:NSFileModificationDate];
+    NSDate * destMTime = [destStat objectForKey:NSFileModificationDate];
+    if(NSOrderedDescending == [srcMTime compare:destMTime])
+      sourceIsNewer = YES;
+  }
+
+  if(sourceIsNewer)
+    [[NSFileManager defaultManager] removeItemAtPath:dbFilePath error:NULL];
+
+  if (!fileExists || sourceIsNewer) {
+    NSError * error;
+    // didn't find db, need to copy
+    BOOL copiedBackupDb = [[NSFileManager defaultManager]
+      copyItemAtPath:backupDbPath
+              toPath:dbFilePath
+               error:&error];
+    if (! copiedBackupDb) {
+      NSLog(@"Couldn't copy database: %@", error);
+      return NO;
+    }
+    NSLog(@"Copied database");
+  }
   NSLog(@"Success!: %@", dbFilePath);
-	return YES;
+  return YES;
 }
 
 - (Stop *)initWithKey: (NSNumber *)initKey
@@ -79,9 +103,61 @@ NSString *dbFilePath;
   return self;
 }
 
++ (void)createFavoriteStop:(NSNumber *)key
+{
+  sqlite3 *db;
+
+  int dbrc = sqlite3_open([dbFilePath UTF8String], &db);
+  if(dbrc) {
+    NSLog(@"Couldn't open database");
+    return;
+  }
+
+  NSString * select = [[NSString alloc]
+    initWithFormat:@"insert into favorite_stops (stop_id) values (%@)",
+    key
+  ];
+  const char * s = [select UTF8String];
+  int length = [select length];
+  sqlite3_stmt *dbps;
+
+  dbrc = sqlite3_prepare_v2(db, s, length, &dbps, NULL); 
+
+  if(dbrc) {
+    NSLog(@"Couldn't prepare statement: %d", dbrc);
+    return;
+  }
+
+  while(SQLITE_ROW == sqlite3_step(dbps)) { }
+  sqlite3_finalize(dbps);
+  sqlite3_close(db);
+}
+
++ (Stop *)findFavoriteByKey:(NSNumber *)key
+{
+  NSString * where = [[NSString alloc]
+    initWithFormat:@"id in (select stop_id from favorite_stops where stop_id = %@)", key];
+
+  NSMutableArray * stops = [Stop findAllWhere:where];
+
+  if([stops count] > 0)
+    return [stops objectAtIndex:0];
+
+  return nil;
+}
+
++ (NSMutableArray *)findAllFavorites
+{
+  return [Stop findAllWhere:@"id in (select stop_id from favorite_stops)"];
+}
+
 + (NSMutableArray *)findAll
 {
-  [Stop initializeDb];
+  return [Stop findAllWhere:@"1 = 1"];
+}
+
++ (NSMutableArray *)findAllWhere:(NSString *)conditions
+{
   sqlite3 *db;
 
   int dbrc = sqlite3_open([dbFilePath UTF8String], &db);
@@ -90,7 +166,10 @@ NSString *dbFilePath;
     return nil;
   }
 
-  NSString * select = @"select id, name, section, remote_id from stops";
+  NSString * select = [[NSString alloc]
+    initWithFormat:@"select id, name, section, remote_id from stops where %@",
+    conditions
+  ];
   const char * s = [select UTF8String];
   int length = [select length];
   sqlite3_stmt *dbps;

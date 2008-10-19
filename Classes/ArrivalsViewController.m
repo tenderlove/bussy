@@ -1,5 +1,5 @@
 //
-//  BusStopViewController.m
+//  ArrivalsViewController.m
 //  Bussy
 //
 //  Created by Aaron Patterson on 10/9/08.
@@ -10,6 +10,7 @@
 #import "Stop.h"
 #import "EventBuilder.h"
 #import "Event.h"
+#import "FavoritesViewController.h"
 
 
 @implementation ArrivalsViewController
@@ -17,23 +18,24 @@
 @synthesize arrivals;
 @synthesize stop;
 @synthesize loadingBusData;
+@synthesize stopKey;
 
 - (void)setLoadingBusData:(BOOL)a
 {
   loadingBusData = a;
-	[tableView reloadData];
+  [tableView reloadData];
 }
 
 - (void)setArrivals:(NSArray *)a
 {
-	[arrivals release];
-	arrivals = [a retain];
-	[tableView reloadData];
+  [arrivals release];
+  arrivals = [a retain];
+  [tableView reloadData];
 }
 
 - (UITableViewCell *)loadingCell
 {
-	UITableViewCell * cell =
+  UITableViewCell * cell =
     [tableView dequeueReusableCellWithIdentifier:@"loadingCell"];
   if(nil == cell) cell = loadingCell;
   return cell;
@@ -41,7 +43,7 @@
 
 - (UITableViewCell *)noArrivalsCell
 {
-	UITableViewCell * cell =
+  UITableViewCell * cell =
     [tableView dequeueReusableCellWithIdentifier:@"noArrivalsCell"];
   if(nil == cell) cell = noArrivalsCell;
   return cell;
@@ -92,10 +94,10 @@ didReceiveResponse:(NSURLResponse *)response
   if([[self arrivals] count] == 0)
     return [self noArrivalsCell];
 
-	UITableViewCell * cell = [tv dequeueReusableCellWithIdentifier:@"arrival"];
-	if(nil == cell)
-		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"arrival"] autorelease];
-	
+  UITableViewCell * cell = [tv dequeueReusableCellWithIdentifier:@"arrival"];
+  if(nil == cell)
+    cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"arrival"] autorelease];
+  
   Event * event = [[self arrivals] objectAtIndex:indexPath.section];
   [cell setTextColor:[UIColor blackColor]];
   switch(indexPath.row)
@@ -127,7 +129,7 @@ didReceiveResponse:(NSURLResponse *)response
             hour > 12 ? hour - 12 : hour, minute
         ];
       }
-      if(hour > 12) {
+      if(hour > 12 && hour < 24) {
         [timeString appendString:@"pm"];
       } else {
         [timeString appendString:@"am"];
@@ -150,8 +152,8 @@ didReceiveResponse:(NSURLResponse *)response
       }
       return cell;
   }
-	
-	return cell;
+  
+  return cell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -163,7 +165,7 @@ didReceiveResponse:(NSURLResponse *)response
   if([[self arrivals] count] == 0)
     return 1;
 
-	return [[self arrivals] count];
+  return [[self arrivals] count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView
@@ -198,10 +200,10 @@ titleForHeaderInSection:(NSInteger)section
 
 - (id)initWithNibName:(NSString *)nibNameOrNil
                bundle:(NSBundle *)nibBundleOrNil {
-	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-		// Initialization code
-	}
-	return self;
+  if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+    // Initialization code
+  }
+  return self;
 }
 
 /*
@@ -210,20 +212,30 @@ titleForHeaderInSection:(NSInteger)section
 }
  */
 
+- (void)addFavorite:(id)sender
+{
+  [favoritesController createFavoriteStop:stopKey];
+  self.navigationItem.rightBarButtonItem = nil;
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
+  // Return YES for supported orientations
+  return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
 }
 
 
 - (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-	// Release anything that's not essential, such as cached data
+  [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
+  // Release anything that's not essential, such as cached data
 }
 
 
 - (void)dealloc {
-	[super dealloc];
+  [super dealloc];
 }
 
 
