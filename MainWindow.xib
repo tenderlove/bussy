@@ -9,6 +9,7 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="121"/>
+			<integer value="139"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -58,7 +59,7 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 					</object>
-					<object class="NSArray" key="IBUIViewControllers">
+					<object class="NSMutableArray" key="IBUIViewControllers">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="IBUIViewController" id="425220980">
 							<string key="IBUITitle">Favorites</string>
@@ -148,6 +149,10 @@
 					</object>
 					<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				</object>
+			</object>
+			<object class="IBUIViewController" id="725416625">
+				<string key="IBUINibName">Arrival</string>
+				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -277,9 +282,9 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">arrivalsController</string>
 						<reference key="source" ref="425220980"/>
-						<reference key="destination" ref="296379359"/>
+						<reference key="destination" ref="725416625"/>
 					</object>
-					<int key="connectionID">138</int>
+					<int key="connectionID">140</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -421,6 +426,11 @@
 						<reference key="object" ref="818365605"/>
 						<reference key="parent" ref="425220980"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">139</int>
+						<reference key="object" ref="725416625"/>
+						<reference key="parent" ref="957960031"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -434,6 +444,9 @@
 					<string>105.IBPluginDependency</string>
 					<string>121.CustomClassName</string>
 					<string>126.IBPluginDependency</string>
+					<string>139.CustomClassName</string>
+					<string>139.IBEditorWindowLastContentRect</string>
+					<string>139.IBPluginDependency</string>
 					<string>17.CustomClassName</string>
 					<string>17.IBEditorWindowLastContentRect</string>
 					<string>17.IBPluginDependency</string>
@@ -456,6 +469,9 @@
 					<string>FavoritesViewController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>ArrivalsViewController</string>
+					<string>{{0, 265}, {320, 480}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>ArrivalsViewController</string>
 					<string>{{21, 242}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSMutableDictionary">
@@ -469,7 +485,7 @@
 					</object>
 					<string>{{362, 376}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{112, 181}, {320, 480}}</string>
+					<string>{{633, 256}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>BussyAppDelegate</string>
@@ -496,7 +512,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">138</int>
+			<int key="maxID">140</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
