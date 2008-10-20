@@ -156,6 +156,36 @@ NSString *dbFilePath;
   return [Stop findAllWhere:@"1 = 1"];
 }
 
++ (void)destroyFavoriteFor:(Stop *)stop
+{
+  sqlite3 *db;
+
+  int dbrc = sqlite3_open([dbFilePath UTF8String], &db);
+  if(dbrc) {
+    NSLog(@"Couldn't open database");
+    return;
+  }
+
+  NSString * select = [[NSString alloc]
+    initWithFormat:@"delete from favorite_stops where stop_id = %@",
+    [stop key]
+  ];
+  const char * s = [select UTF8String];
+  int length = [select length];
+  sqlite3_stmt *dbps;
+
+  dbrc = sqlite3_prepare_v2(db, s, length, &dbps, NULL); 
+
+  if(dbrc) {
+    NSLog(@"Couldn't prepare statement: %d", dbrc);
+    return;
+  }
+
+  while(SQLITE_ROW == sqlite3_step(dbps)) { }
+  sqlite3_finalize(dbps);
+  sqlite3_close(db);
+}
+
 + (NSMutableArray *)findAllWhere:(NSString *)conditions
 {
   sqlite3 *db;

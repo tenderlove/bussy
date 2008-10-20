@@ -21,6 +21,7 @@
               section: (NSString *)section
            locationId: (NSInteger)locationId;
 
++ (void)destroyFavoriteFor:(Stop *)stop;
 + (Stop *)findFavoriteByKey:(NSNumber *)key;
 + (void)createFavoriteStop:(NSNumber *)key;
 + (NSMutableArray *)findAllWhere:(NSString *)conditions;

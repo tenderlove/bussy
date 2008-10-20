@@ -31,6 +31,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tv
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
   UITableViewCell * cell =
     [tv dequeueReusableCellWithIdentifier:@"favStops"];
 
@@ -59,8 +60,34 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
   [navController pushViewController:arrivalsController animated:YES];
 }
 
+-   (void)tableView:(UITableView *)tv
+ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+  forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if(editingStyle == UITableViewCellEditingStyleDelete)
+  {
+    Stop * clickedStop = [stops objectAtIndex:indexPath.row];
+    [Stop destroyFavoriteFor:clickedStop];
+    [self setStops:[Stop findAllFavorites]];
+    [tv deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+              withRowAnimation:UITableViewRowAnimationLeft];
+  }
+}
+
+- (void)setEditing:(BOOL)editing
+          animated:(BOOL)animated
+{
+  [super setEditing:editing animated:animated];
+  [tableView setEditing:editing animated:animated];
+}
+
 - (void)dealloc {
   [super dealloc];
+}
+
+- (void)viewDidLoad
+{
+  self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
