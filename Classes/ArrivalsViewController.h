@@ -20,8 +20,10 @@
   IBOutlet UITableViewCell *loadingCell;
   IBOutlet UITableViewCell *noArrivalsCell;
   IBOutlet FavoritesViewController *favoritesController;
+	IBOutlet UINavigationController *navController;
   BOOL loadingBusData;
   NSNumber * stopKey;
+  UIAlertView *baseAlert;
 }
 
 @property (nonatomic, retain) NSArray *arrivals;

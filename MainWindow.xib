@@ -3,7 +3,7 @@
 	<data>
 		<int key="IBDocument.SystemTarget">512</int>
 		<string key="IBDocument.SystemVersion">9F33</string>
-		<string key="IBDocument.InterfaceBuilderVersion">670</string>
+		<string key="IBDocument.InterfaceBuilderVersion">672</string>
 		<string key="IBDocument.AppKitVersion">949.34</string>
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
@@ -286,6 +286,22 @@
 					</object>
 					<int key="connectionID">140</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">navController</string>
+						<reference key="source" ref="725416625"/>
+						<reference key="destination" ref="295413852"/>
+					</object>
+					<int key="connectionID">143</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">navController</string>
+						<reference key="source" ref="296379359"/>
+						<reference key="destination" ref="763311516"/>
+					</object>
+					<int key="connectionID">144</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -469,7 +485,7 @@
 					<string>FavoritesViewController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>ArrivalsViewController</string>
-					<string>{{0, 265}, {320, 480}}</string>
+					<string>{{312, 265}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>ArrivalsViewController</string>
 					<string>{{21, 242}, {320, 480}}</string>
@@ -485,7 +501,7 @@
 					</object>
 					<string>{{362, 376}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{633, 256}, {320, 480}}</string>
+					<string>{{594, 256}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>BussyAppDelegate</string>
@@ -512,7 +528,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">140</int>
+			<int key="maxID">144</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -526,6 +542,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>favoritesController</string>
 							<string>loadingCell</string>
+							<string>navController</string>
 							<string>noArrivalsCell</string>
 							<string>tableView</string>
 						</object>
@@ -533,6 +550,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>FavoritesViewController</string>
 							<string>UITableViewCell</string>
+							<string>UINavigationController</string>
 							<string>UITableViewCell</string>
 							<string>UITableView</string>
 						</object>

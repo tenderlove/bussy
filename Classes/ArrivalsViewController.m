@@ -61,7 +61,7 @@
 - (void)connection:(NSURLConnection *)connection
   didFailWithError:(NSError *)error
 {
-  NSLog(@"FUCK: %@", error);
+  [baseAlert show];
 }
 
 - (void)connection:(NSURLConnection *)connection
@@ -206,11 +206,22 @@ titleForHeaderInSection:(NSInteger)section
   return self;
 }
 
-/*
- Implement loadView if you want to create a view hierarchy programmatically
-- (void)loadView {
+-    (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+  [navController popViewControllerAnimated:YES];
+  NSLog(@"HELLO WORLD");
 }
- */
+
+- (void)loadView {
+  baseAlert = [[UIAlertView alloc]
+    initWithTitle:@"Alert"
+          message:@"FUCK!"
+         delegate:self
+cancelButtonTitle:nil
+otherButtonTitles:@"OK", nil];
+  [super loadView];
+}
 
 - (void)addFavorite:(id)sender
 {
