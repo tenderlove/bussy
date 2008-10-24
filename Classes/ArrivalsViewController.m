@@ -33,6 +33,14 @@
   [tableView reloadData];
 }
 
+- (UITableViewCell *)favoritesCell
+{
+  UITableViewCell * cell =
+    [tableView dequeueReusableCellWithIdentifier:@"favoritesCell"];
+  if(nil == cell) cell = favoritesCell;
+  return cell;
+}
+
 - (UITableViewCell *)loadingCell
 {
   UITableViewCell * cell =
@@ -93,6 +101,9 @@ didReceiveResponse:(NSURLResponse *)response
 
   if([[self arrivals] count] == 0)
     return [self noArrivalsCell];
+
+  if([indexPath section] >= [[self arrivals] count])
+    return [self favoritesCell];
 
   UITableViewCell * cell = [tv dequeueReusableCellWithIdentifier:@"arrival"];
   if(nil == cell)
@@ -165,7 +176,12 @@ didReceiveResponse:(NSURLResponse *)response
   if([[self arrivals] count] == 0)
     return 1;
 
-  return [[self arrivals] count];
+  NSInteger count = [[self arrivals] count];
+  
+  // Increase the count by one so we can add the favorites button
+  if(![Stop findFavoriteByKey:stopKey]) count++;
+
+  return count;
 }
 
 - (NSString *)tableView:(UITableView *)tableView
@@ -177,6 +193,9 @@ titleForHeaderInSection:(NSInteger)section
   if([[self arrivals] count] == 0)
     return @"Cue sad trombone..";
 
+  if(section >= [[self arrivals] count])
+    return @"Add to Favorites";
+
   return [[[self arrivals] objectAtIndex:section] title];
 }
 
@@ -187,6 +206,9 @@ titleForHeaderInSection:(NSInteger)section
     return 1;
 
   if([[self arrivals] count] == 0) return 1;
+
+  // Favorites section
+  if(section >= [[self arrivals] count]) return 1;
 
   Event * event = [[self arrivals] objectAtIndex:section];
 
@@ -236,9 +258,10 @@ otherButtonTitles:@"OK", nil];
                           delegate:self];
 }
 
-- (void)addFavorite:(id)sender
+- (IBAction)addToFavorites:(id)sender;
 {
   [favoritesController createFavoriteStop:stopKey];
+  [tableView reloadData];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

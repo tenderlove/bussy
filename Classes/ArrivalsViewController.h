@@ -16,6 +16,8 @@
 	IBOutlet UITableView *tableView;
   IBOutlet UITableViewCell *loadingCell;
   IBOutlet UITableViewCell *noArrivalsCell;
+  IBOutlet UITableViewCell *favoritesCell;
+
   IBOutlet FavoritesViewController *favoritesController;
 	IBOutlet UINavigationController *navController;
 
@@ -26,6 +28,8 @@
   Stop * stop;
   UIAlertView *baseAlert;
 }
+
+- (IBAction)addToFavorites:(id)sender;
 
 @property (nonatomic, retain) NSArray *arrivals;
 @property (nonatomic, retain) Stop *stop;
