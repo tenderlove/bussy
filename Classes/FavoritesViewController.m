@@ -51,12 +51,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
   [arrivalsController setStop:clickedStop];
   [arrivalsController setTitle:[clickedStop name]];
   [arrivalsController setStopKey:[clickedStop key]];
-  [arrivalsController setLoadingBusData:YES];
+  [arrivalsController refresh:self];
 
-  [Event fetchEventsWithLocationId:[clickedStop locationId]
-                          delegate:arrivalsController];
-
-  arrivalsController.navigationItem.rightBarButtonItem = nil;
   [navController pushViewController:arrivalsController animated:YES];
 }
 
@@ -87,7 +83,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)viewDidLoad
 {
-  self.navigationItem.rightBarButtonItem = self.editButtonItem;
+  self.navigationItem.leftBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

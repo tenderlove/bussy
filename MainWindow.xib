@@ -8,8 +8,8 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="121"/>
 			<integer value="139"/>
+			<integer value="121"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -38,6 +38,7 @@
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 			</object>
 			<object class="IBUIViewController" id="296379359">
+				<string key="IBUITitle">Bus Stops</string>
 				<string key="IBUINibName">Arrival</string>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 			</object>
@@ -151,6 +152,7 @@
 				</object>
 			</object>
 			<object class="IBUIViewController" id="725416625">
+				<string key="IBUITitle">Favorites</string>
 				<string key="IBUINibName">Arrival</string>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 			</object>
@@ -485,7 +487,7 @@
 					<string>FavoritesViewController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>ArrivalsViewController</string>
-					<string>{{312, 265}, {320, 480}}</string>
+					<string>{{24, 233}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>ArrivalsViewController</string>
 					<string>{{21, 242}, {320, 480}}</string>
@@ -501,7 +503,7 @@
 					</object>
 					<string>{{362, 376}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{594, 256}, {320, 480}}</string>
+					<string>{{-734, 239}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>BussyAppDelegate</string>

@@ -42,19 +42,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
   [arrivalsController setStop:clickedStop];
   [arrivalsController setTitle:[clickedStop name]];
   [arrivalsController setStopKey:[clickedStop key]];
-  [arrivalsController setLoadingBusData:YES];
 
-  [Event fetchEventsWithLocationId:[clickedStop locationId]
-                          delegate:arrivalsController];
+  [arrivalsController refresh:self];
 
-  arrivalsController.navigationItem.rightBarButtonItem = nil;
-  if(! [Stop findFavoriteByKey:[clickedStop key]]) {
-    arrivalsController.navigationItem.rightBarButtonItem =
-      [[[UIBarButtonItem alloc]
-      initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks
-                           target:arrivalsController
-                           action:@selector(addFavorite:)] autorelease];
-  }
   [navController pushViewController:arrivalsController animated:YES];
 }
 

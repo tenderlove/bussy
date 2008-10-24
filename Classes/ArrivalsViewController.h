@@ -32,5 +32,6 @@
 @property (nonatomic, retain) NSNumber * stopKey;
 
 - (UITableViewCell *)loadingCell;
+- (void)refresh:(id)sender;
 
 @end

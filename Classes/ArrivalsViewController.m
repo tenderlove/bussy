@@ -210,23 +210,35 @@ titleForHeaderInSection:(NSInteger)section
 clickedButtonAtIndex:(NSInteger)buttonIndex
 {
   [navController popViewControllerAnimated:YES];
-  NSLog(@"HELLO WORLD");
 }
 
 - (void)loadView {
+  [super loadView];
+
   baseAlert = [[UIAlertView alloc]
     initWithTitle:@"Alert"
-          message:@"FUCK!"
+          message:@"Oh noes! You're internets are fail!"
          delegate:self
 cancelButtonTitle:nil
 otherButtonTitles:@"OK", nil];
-  [super loadView];
+
+  [[self navigationItem] setRightBarButtonItem:
+    [[[UIBarButtonItem alloc]
+    initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                         target:self
+                         action:@selector(refresh:)] autorelease]];
+}
+
+- (void)refresh:(id)sender
+{
+  [self setLoadingBusData:YES];
+  [Event fetchEventsWithLocationId:[stop locationId]
+                          delegate:self];
 }
 
 - (void)addFavorite:(id)sender
 {
   [favoritesController createFavoriteStop:stopKey];
-  self.navigationItem.rightBarButtonItem = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
