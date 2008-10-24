@@ -13,16 +13,17 @@
 @class FavoritesViewController;
 
 @interface ArrivalsViewController : UIViewController <UITableViewDataSource> {
-	NSArray *arrivals;
 	IBOutlet UITableView *tableView;
-  Stop * stop;
-  NSMutableString *responseData;
   IBOutlet UITableViewCell *loadingCell;
   IBOutlet UITableViewCell *noArrivalsCell;
   IBOutlet FavoritesViewController *favoritesController;
 	IBOutlet UINavigationController *navController;
+
+	NSArray *arrivals;
   BOOL loadingBusData;
+  NSMutableString *responseData;
   NSNumber * stopKey;
+  Stop * stop;
   UIAlertView *baseAlert;
 }
 
