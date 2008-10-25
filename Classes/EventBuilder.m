@@ -9,8 +9,6 @@
 #import "EventBuilder.h"
 #import "Event.h"
 
-#include <libxml/parser.h>
-
 @implementation EventBuilder
 
 @synthesize eventList;
@@ -106,8 +104,8 @@ foundCharacters:(NSString *)string
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser
 {
-  [delegate setLoadingBusData:NO];
-  [delegate setArrivals:
+  [delegate performSelector:@selector(setLoadingBusData:) withObject:NO];
+  [delegate performSelector:@selector(setArrivals:) withObject:
     [[self eventList] sortedArrayUsingSelector:@selector(goalTimeCompare:)]];
 }
 
