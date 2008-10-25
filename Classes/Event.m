@@ -7,6 +7,7 @@
 //
 
 #import "Event.h"
+#import "EventBuilder.h"
 
 @implementation Event
 
@@ -26,12 +27,11 @@
 
   NSURL *url = [NSURL URLWithString: urlString];
 
-  NSURLRequest *request = [[NSURLRequest alloc] initWithURL: url];
-  NSURLConnection *connection = [[NSURLConnection alloc]
-    initWithRequest:request
-           delegate:delegate];
-  [connection release];
-  [request release];
+  NSXMLParser * parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+  EventBuilder * builder = [[EventBuilder alloc] initWithDelegate:delegate];
+  [parser setDelegate:builder];
+  [parser parse];
+  [parser release];
 }
 
 - (NSString *)title

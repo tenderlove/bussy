@@ -15,12 +15,14 @@
   Event * currentEvent;
   NSMutableArray * eventList;
   NSMutableString * characterBuffer;
+  id delegate;
 }
 
-+ (NSArray *)fromXML:(NSString *)xmlData;
+- (EventBuilder *)initWithDelegate:(id)delegate;
 
 @property (nonatomic, retain) NSMutableArray *eventList;
 @property (nonatomic, retain) Event *currentEvent;
 @property (nonatomic, retain) NSMutableString *characterBuffer;
+@property (nonatomic, retain) id delegate;
 
 @end

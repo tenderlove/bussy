@@ -99,42 +99,6 @@
   return cell;
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-  [self setLoadingBusData:NO];
-  NSArray * array = [EventBuilder fromXML:responseData];
-  NSArray * sorted = [array sortedArrayUsingSelector:@selector(goalTimeCompare:)];
-  [array release];
-  [self setArrivals:sorted];
-}
-
-- (void)connection:(NSURLConnection *)connection
-  didFailWithError:(NSError *)error
-{
-  [baseAlert show];
-}
-
-- (void)connection:(NSURLConnection *)connection
-didReceiveResponse:(NSURLResponse *)response
-{
-  NSLog (@"got a response");
-  if(nil != responseData) [responseData release];
-
-  responseData = [[NSMutableString alloc] init];
-}
-
-- (void)connection:(NSURLConnection *)connection
-    didReceiveData:(NSData *)data
-{
-  NSString *newText = [[NSString alloc]
-    initWithData:data
-        encoding:NSUTF8StringEncoding];
-  if (newText != NULL) {
-    [responseData appendString:newText];
-    [newText release];
-  }
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tv
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -313,8 +277,16 @@ otherButtonTitles:@"OK", nil];
   return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
   [super viewWillAppear:animated];
+  [self setLoadingBusData:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+  [self refresh:self];
 }
 
 

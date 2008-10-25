@@ -42,9 +42,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
   [arrivalsController setStop:clickedStop];
   [arrivalsController setTitle:[clickedStop name]];
   [arrivalsController setStopKey:[clickedStop key]];
-
-  [arrivalsController refresh:self];
-
   [navController pushViewController:arrivalsController animated:YES];
 }
 

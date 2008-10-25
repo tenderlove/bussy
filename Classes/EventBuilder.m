@@ -16,38 +16,34 @@
 @synthesize eventList;
 @synthesize currentEvent;
 @synthesize characterBuffer;
+@synthesize delegate;
 
-void startElement(void *ctx, const xmlChar *name, const xmlChar **attrs)
+-  (void)parser:(NSXMLParser *)parser
+didStartElement:(NSString *)elementName
+   namespaceURI:(NSString *)namespaceURI
+  qualifiedName:(NSString *)qName
+     attributes:(NSDictionary *)attributeDict
 {
-  EventBuilder * self = (EventBuilder *)ctx;
-
-  NSString * tagName = [[NSString alloc] initWithCString:(const char *)name];
-
-    //[responseData appendString:newText];
-  if([tagName isEqualToString:@"multiRef"]) {
+  if([elementName isEqualToString:@"multiRef"]) {
     [self setCurrentEvent:[[Event alloc] init]];
   }
-  [tagName release];
 
   [self setCharacterBuffer:[[NSMutableString alloc] init]];
 }
 
-void charactersFunction(void *ctx, const xmlChar *ch, int len)
+-  (void)parser:(NSXMLParser *)parser
+foundCharacters:(NSString *)string
 {
-  EventBuilder * self = (EventBuilder *)ctx;
   if(nil == [self characterBuffer]) return;
 
-  NSString * newText = [[NSString alloc] initWithCString:(const char *)ch
-                                                  length:len];
-  [[self characterBuffer] appendString:newText];
-  [newText release];
+  [[self characterBuffer] appendString:string];
 }
 
-void endElement(void *ctx, const xmlChar *name)
+- (void)parser:(NSXMLParser *)parser
+ didEndElement:(NSString *)tagName
+  namespaceURI:(NSString *)namespaceURI
+ qualifiedName:(NSString *)qName
 {
-  EventBuilder * self = (EventBuilder *)ctx;
-  NSString * tagName = [[NSString alloc] initWithCString:(const char *)name];
-
   if([tagName isEqualToString:@"multiRef"]) {
     [[self eventList] addObject:[self currentEvent]];
   }
@@ -106,14 +102,21 @@ void endElement(void *ctx, const xmlChar *name)
   */
 
   [self setCharacterBuffer: nil];
-  [tagName release];
 }
 
-- (EventBuilder *)init
+- (void)parserDidEndDocument:(NSXMLParser *)parser
+{
+  [delegate setLoadingBusData:NO];
+  [delegate setArrivals:
+    [[self eventList] sortedArrayUsingSelector:@selector(goalTimeCompare:)]];
+}
+
+- (EventBuilder *)initWithDelegate:(id)del
 {
   [super init];
   [self setCurrentEvent:nil];
   [self setEventList:[[NSMutableArray alloc] init]];
+  [self setDelegate:del];
   return self;
 }
 
@@ -121,34 +124,8 @@ void endElement(void *ctx, const xmlChar *name)
 {
   if(nil != currentEvent) [currentEvent release]; 
   [eventList release];
+  [delegate release];
   [super dealloc];
-}
-
-+ (NSArray *)fromXML:(NSString *)xmlData
-{
-  [xmlData retain];
-
-  EventBuilder * builder = [[EventBuilder alloc] init];
-
-  xmlSAXHandlerPtr handler = calloc(1, sizeof(xmlSAXHandler));
-  handler->startElement = startElement;
-  handler->endElement = endElement;
-  handler->characters = charactersFunction;
-
-  xmlSAXUserParseMemory(
-    handler,
-    (void *)builder,
-    [xmlData UTF8String],
-    [xmlData length]
-  );
-
-  [xmlData release];
-  free(handler);
-
-  NSMutableArray * eventList = [builder eventList];
-  [builder release];
-
-  return (NSArray *)eventList;
 }
 
 @end
