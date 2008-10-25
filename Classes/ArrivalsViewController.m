@@ -35,7 +35,11 @@
 
 - (UITableViewCell *)arrivalsCell
 {
-  return [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"arrivalsCell"] autorelease];
+  UITableViewCell * cell = [[[UITableViewCell alloc]
+    initWithFrame:CGRectZero
+  reuseIdentifier:@"arrivalsCell"] autorelease];
+  [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+  return cell;
 }
 
 - (UILabel *)titleLabel

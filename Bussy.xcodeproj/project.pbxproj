@@ -19,6 +19,7 @@
 		934135EA0E9F023200E3F022 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 934135E90E9F023200E3F022 /* CoreGraphics.framework */; };
 		9341360A0E9F071E00E3F022 /* ArrivalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 934136090E9F071E00E3F022 /* ArrivalsViewController.m */; };
 		9341360C0E9F075600E3F022 /* Arrival.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9341360B0E9F075600E3F022 /* Arrival.xib */; };
+		9386EFF50EB2E32800833CD9 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9386EFF40EB2E32800833CD9 /* Icon.png */; };
 		93A495230EA1B972005ED025 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93A495220EA1B972005ED025 /* libsqlite3.dylib */; };
 		93A495360EA1C5D1005ED025 /* bus.db in Resources */ = {isa = PBXBuildFile; fileRef = 93A495350EA1C5D1005ED025 /* bus.db */; };
 		93A495420EA2F372005ED025 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A495410EA2F372005ED025 /* Stop.m */; };
@@ -49,6 +50,7 @@
 		934136080E9F071E00E3F022 /* ArrivalsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrivalsViewController.h; sourceTree = "<group>"; };
 		934136090E9F071E00E3F022 /* ArrivalsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrivalsViewController.m; sourceTree = "<group>"; };
 		9341360B0E9F075600E3F022 /* Arrival.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Arrival.xib; sourceTree = "<group>"; };
+		9386EFF40EB2E32800833CD9 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		93A495220EA1B972005ED025 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		93A495350EA1C5D1005ED025 /* bus.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = bus.db; sourceTree = "<group>"; };
 		93A495400EA2F372005ED025 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9386EFF40EB2E32800833CD9 /* Icon.png */,
 				93F2049E0EA9B721004CF17F /* Stop.png */,
 				93A495350EA1C5D1005ED025 /* bus.db */,
 				2899E5210DE3E06400AC0155 /* BussyViewController.xib */,
@@ -205,6 +208,7 @@
 				93A495360EA1C5D1005ED025 /* bus.db in Resources */,
 				93F2049F0EA9B721004CF17F /* Stop.png in Resources */,
 				930DFEE70EB2C7A6006D5067 /* AddFavorite.xib in Resources */,
+				9386EFF50EB2E32800833CD9 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
