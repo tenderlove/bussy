@@ -10,6 +10,7 @@
 #import "BussyAppDelegate.h"
 #import "Stop.h"
 #import "ArrivalsViewController.h"
+#import "AddFavoriteViewController.h"
 #import "Event.h"
 
 
