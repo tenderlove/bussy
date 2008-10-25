@@ -17,6 +17,7 @@
   IBOutlet UITableViewCell *loadingCell;
   IBOutlet UITableViewCell *noArrivalsCell;
   IBOutlet UITableViewCell *favoritesCell;
+  IBOutlet UITableViewCell *arrivalsCell;
 
   IBOutlet FavoritesViewController *favoritesController;
 	IBOutlet UINavigationController *navController;

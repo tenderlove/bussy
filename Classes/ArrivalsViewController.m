@@ -33,6 +33,44 @@
   [tableView reloadData];
 }
 
+- (UITableViewCell *)arrivalsCell
+{
+  return [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"arrivalsCell"] autorelease];
+}
+
+- (UILabel *)titleLabel
+{
+  CGRect titleRect = CGRectMake(5.0f, 1.0f, 315.0f, 20.0f);
+  UILabel * title = [[UILabel alloc] initWithFrame:titleRect];
+  [title setFont:[UIFont boldSystemFontOfSize:18.0f]];
+  [title setBackgroundColor:[UIColor clearColor]];
+  [title setTextAlignment:UITextAlignmentLeft];
+  [title setTextColor:[UIColor blackColor]];
+  return title;
+}
+
+- (UILabel *)subTitleLabel
+{
+  CGRect titleRect = CGRectMake(20.0f, 14.0f, 300.0f, 20.0f);
+  UILabel * title = [[UILabel alloc] initWithFrame:titleRect];
+  [title setFont:[UIFont systemFontOfSize:14.0f]];
+  [title setBackgroundColor:[UIColor clearColor]];
+  [title setTextAlignment:UITextAlignmentLeft];
+  [title setTextColor:[UIColor blackColor]];
+  return title;
+}
+
+- (UILabel *)subSubTitleLabel
+{
+  CGRect titleRect = CGRectMake(20.0f, 26.0f, 300.0f, 20.0f);
+  UILabel * title = [[UILabel alloc] initWithFrame:titleRect];
+  [title setFont:[UIFont systemFontOfSize:12.0f]];
+  [title setBackgroundColor:[UIColor clearColor]];
+  [title setTextAlignment:UITextAlignmentLeft];
+  [title setTextColor:[UIColor grayColor]];
+  return title;
+}
+
 - (UITableViewCell *)favoritesCell
 {
   UITableViewCell * cell =
@@ -105,65 +143,70 @@ didReceiveResponse:(NSURLResponse *)response
   if([indexPath section] >= [[self arrivals] count])
     return [self favoritesCell];
 
-  UITableViewCell * cell = [tv dequeueReusableCellWithIdentifier:@"arrival"];
-  if(nil == cell)
-    cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"arrival"] autorelease];
-  
+  UITableViewCell * cell = [self arrivalsCell];
+  UILabel * title = [self titleLabel];
+  UILabel * subTitle = [self subTitleLabel];
+  UILabel * subSubTitle = [self subSubTitleLabel];
+
   Event * event = [[self arrivals] objectAtIndex:indexPath.section];
-  [cell setTextColor:[UIColor blackColor]];
-  switch(indexPath.row)
-  {
-    int goalDeviation, schedTime, minute, hour, distanceToGoal;
-    NSMutableString * timeString;
-    case 0:
-      cell.text = [event destination];
-      return cell;
-    case 1:
-      distanceToGoal = [[event distanceToGoal] intValue];
-      if(distanceToGoal < 0) {
-        schedTime = [[event goalTime] intValue];
-      } else {
-        schedTime = [[event schedTime] intValue];
-      }
+  title.text = [event title];
+  subTitle.text = [event destination];
 
-      minute = (schedTime / 60) % 60;
-      hour = (schedTime / 60) / 60;
+  int distanceToGoal = [[event distanceToGoal] intValue];
+  int goalDeviation = [[event goalDeviation] intValue] / 60;
 
-      if(distanceToGoal < 0) {
-        timeString = [NSMutableString
-          stringWithFormat:@"Departed at %d:%02d ",
-            hour > 12 ? hour - 12 : hour, minute
-        ];
-      } else {
-        timeString = [NSMutableString
-          stringWithFormat:@"Scheduled for %d:%02d ",
-            hour > 12 ? hour - 12 : hour, minute
-        ];
-      }
-      if(hour > 12 && hour < 24) {
-        [timeString appendString:@"pm"];
-      } else {
-        [timeString appendString:@"am"];
-      }
-      cell.text = timeString;
-      return cell;
-    case 2:
-      goalDeviation = [[event goalDeviation] intValue] / 60;
-      if(goalDeviation == 0) {
-        cell.text = @"On Time";
-      } else if(goalDeviation < 0) {
-        cell.text = @"Early";
-        cell.text = [NSString
-          stringWithFormat:@"%d minutes early", abs(goalDeviation)];
-        [cell setTextColor:[UIColor redColor]];
-      } else {
-        cell.text = [NSString
-          stringWithFormat:@"%d minute delay", goalDeviation];
-        [cell setTextColor:[UIColor blueColor]];
-      }
-      return cell;
+  int schedTime;
+  if(distanceToGoal < 0) {
+    schedTime = [[event goalTime] intValue];
+  } else {
+    schedTime = [[event goalTime] intValue] + goalDeviation;
   }
+
+  int minute = (schedTime / 60) % 60;
+  int hour = (schedTime / 60) / 60;
+
+  NSMutableString * timeString;
+  if(distanceToGoal < 0) {
+    timeString = [NSMutableString
+      stringWithFormat:@"Departed at %d:%02d ",
+        hour > 12 ? hour - 12 : hour, minute
+    ];
+  } else {
+    timeString = [NSMutableString
+      stringWithFormat:@"Scheduled for %d:%02d ",
+        hour > 12 ? hour - 12 : hour, minute
+    ];
+  }
+  if(hour > 12 && hour < 24) {
+    [timeString appendString:@"pm"];
+  } else {
+    [timeString appendString:@"am"];
+  }
+
+  if(distanceToGoal > 0) {
+    if(goalDeviation == 0) {
+      [timeString appendString:@" / On Time"];
+    } else if(goalDeviation < 0) {
+      [timeString appendString:[NSString
+        stringWithFormat:@" / %d minutes early", abs(goalDeviation)]];
+      [title setTextColor:[UIColor redColor]];
+    } else {
+      [timeString appendString:[NSString
+        stringWithFormat:@" / %d minute delay", goalDeviation]];
+      [title setTextColor:[UIColor blueColor]];
+    }
+  }
+
+  [subTitle setTextColor:[title textColor]];
+  subSubTitle.text = timeString;
   
+  [cell addSubview:title];
+  [cell addSubview:subTitle];
+  [cell addSubview:subSubTitle];
+
+  [title release];
+  [subTitle release];
+  [subSubTitle release];
   return cell;
 }
 
@@ -193,10 +236,7 @@ titleForHeaderInSection:(NSInteger)section
   if([[self arrivals] count] == 0)
     return @"Cue sad trombone..";
 
-  if(section >= [[self arrivals] count])
-    return @"Add to Favorites";
-
-  return [[[self arrivals] objectAtIndex:section] title];
+  return nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
@@ -215,9 +255,9 @@ titleForHeaderInSection:(NSInteger)section
   // Only show the destination and the departure time if the bus
   // has already departed.
   if([[event distanceToGoal] intValue] < 0)
-    return 2;
+    return 1;
 
-  return 3;
+  return 1;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil

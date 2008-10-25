@@ -170,7 +170,7 @@
 							<object class="IBUIButton" id="554440877">
 								<reference key="NSNextResponder" ref="391124378"/>
 								<int key="NSvFlags">296</int>
-								<string key="NSFrameSize">{300, 44}</string>
+								<string key="NSFrameSize">{320, 44}</string>
 								<reference key="NSSuperview" ref="391124378"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -599,7 +599,7 @@
 					</object>
 					<string>{{362, 376}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{-734, 239}, {320, 480}}</string>
+					<string>{{-805, 239}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>BussyAppDelegate</string>
@@ -651,6 +651,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>arrivalsCell</string>
 							<string>favoritesCell</string>
 							<string>favoritesController</string>
 							<string>loadingCell</string>
@@ -660,6 +661,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UITableViewCell</string>
 							<string>UITableViewCell</string>
 							<string>FavoritesViewController</string>
 							<string>UITableViewCell</string>
@@ -764,6 +766,7 @@
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">UIButton</string>
+					<string key="superclassName">UIControl</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>
