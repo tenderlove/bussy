@@ -102,6 +102,11 @@ foundCharacters:(NSString *)string
   [self setCharacterBuffer: nil];
 }
 
+- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parserError
+{
+  [delegate performSelector:@selector(showAlert)];
+}
+
 - (void)parserDidEndDocument:(NSXMLParser *)parser
 {
   [delegate performSelector:@selector(setLoadingBusData:) withObject:NO];

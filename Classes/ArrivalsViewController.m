@@ -242,6 +242,11 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
   [navController popViewControllerAnimated:YES];
 }
 
+- (void)showAlert
+{
+  [baseAlert show];
+}
+
 - (void)loadView {
   [super loadView];
 

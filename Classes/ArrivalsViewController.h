@@ -39,5 +39,6 @@
 
 - (UITableViewCell *)loadingCell;
 - (void)refresh:(id)sender;
+- (void)showAlert;
 
 @end
