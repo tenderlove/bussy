@@ -77,13 +77,25 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
   [tableView setEditing:editing animated:animated];
 }
 
+- (IBAction)new:(id)sender
+{
+  [self presentModalViewController:addFavoriteController
+                          animated:YES];
+}
+
 - (void)dealloc {
+  [stops dealloc];
   [super dealloc];
 }
 
 - (void)viewDidLoad
 {
   self.navigationItem.leftBarButtonItem = self.editButtonItem;
+  [[self navigationItem] setRightBarButtonItem:
+    [[[UIBarButtonItem alloc]
+    initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                         target:self
+                         action:@selector(new:)] autorelease]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

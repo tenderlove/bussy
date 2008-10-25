@@ -12,9 +12,9 @@
 @class ArrivalsViewController;
 
 @interface BussyViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate> {
-	IBOutlet BussyAppDelegate *appDelegate;
+  IBOutlet BussyAppDelegate *appDelegate;
   IBOutlet ArrivalsViewController *arrivalsController;
-	IBOutlet UINavigationController *navController;
+  IBOutlet UINavigationController *navController;
 }
 
 @end

@@ -279,7 +279,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
 
   baseAlert = [[UIAlertView alloc]
     initWithTitle:@"Alert"
-          message:@"Oh noes! You're internets are fail!"
+          message:@"Oh noes! Your internets are fail!"
          delegate:self
 cancelButtonTitle:nil
 otherButtonTitles:@"OK", nil];
