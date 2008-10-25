@@ -159,7 +159,7 @@ didReceiveResponse:(NSURLResponse *)response
   if(distanceToGoal < 0) {
     schedTime = [[event goalTime] intValue];
   } else {
-    schedTime = [[event goalTime] intValue] + goalDeviation;
+    schedTime = [[event goalTime] intValue] + [[event goalDeviation] intValue];
   }
 
   int minute = (schedTime / 60) % 60;
